@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beachcasts\Airtable;
 
-class SkeletonClass
+class Airtable
 {
     /**
      * Create a new Skeleton Instance
