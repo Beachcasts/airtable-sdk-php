@@ -14,6 +14,12 @@
             "email": "beachcasts@gmail.com",
             "homepage": "https://github.com/beachcasts",
             "role": "Developer"
+        },
+        {
+            "name": "Adam Culp",
+            "email": "adamculp@uws.net",
+            "homepage": "https://geekyboy.com",
+            "role": "Developer"
         }
     ],
     "require": {
@@ -37,13 +43,5 @@
         "test": "phpunit",
         "check-style": "phpcs src tests",
         "fix-style": "phpcbf src tests"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0-dev"
-        }
-    },
-    "config": {
-        "sort-packages": true
     }
 }
