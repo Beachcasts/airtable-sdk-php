@@ -37,7 +37,7 @@ $ composer require beachcasts/airtable-sdk-php
 
 ``` php
 $skeleton = new Beachcasts\Airtable();
-echo $skeleton->echoPhrase('Hello, Beachcasts!');
+echo $skeleton->echoPhrase('Hello, League!');
 ```
 
 ## Change log
