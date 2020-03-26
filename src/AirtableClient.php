@@ -6,7 +6,7 @@ namespace Beachcasts\Airtable;
 
 use GuzzleHttp\Client;
 
-class Airtable
+class AirtableClient
 {
     private const BASE_URL = 'https://api.airtable.com';
 
