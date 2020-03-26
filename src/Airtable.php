@@ -7,7 +7,7 @@ namespace Beachcasts\Airtable;
 class Airtable
 {
     /**
-     * Create a new Skeleton Instance
+     * Create a new Skeleton Instance.
      */
     public function __construct()
     {
@@ -15,7 +15,7 @@ class Airtable
     }
 
     /**
-     * Friendly welcome
+     * Friendly welcome.
      *
      * @param string $phrase Phrase to return
      *
