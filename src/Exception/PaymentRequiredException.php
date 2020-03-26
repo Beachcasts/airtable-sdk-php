@@ -3,7 +3,7 @@
  * Project airtable-sdk-php
  * File: BadRequestException.php
  * Created by: tpojka
- * On: 25/03/2020
+ * On: 25/03/2020.
  */
 
 namespace Beachcasts\Airtable\Exception;
