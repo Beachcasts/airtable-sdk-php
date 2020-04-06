@@ -7,23 +7,14 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
-PSRs you support to avoid any confusion with users and contributors.
+This Airtable SDK for PHP makes it easier to leverage the Airtable API leveraging popular PHP conventions.
 
-## Structure
+NOTE: This project is under active development, and is NOT ready for use.
 
-If any of the following are applicable to your project, then the directory structure should follow industry best practices by being named the following.
+## Prerequisites
 
-```
-bin/        
-build/
-docs/
-config/
-src/
-tests/
-vendor/
-```
-
+* Composer installed globally
+* PHP v7.2+
 
 ## Install
 
@@ -35,9 +26,28 @@ $ composer require beachcasts/airtable-sdk-php
 
 ## Usage
 
+Rename `.env.default` to `.env`, and update as needed.
+
+Below is what a sample usage might look like, in the SDK current unfinished state.
 ``` php
-$skeleton = new Beachcasts\Airtable();
-echo $skeleton->echoPhrase('Hello, League!');
+require_once('vendor/autoload.php');
+
+use Beachcasts\Airtable\Table;
+use Beachcasts\Airtable\AirtableClient;
+
+Dotenv\Dotenv::create(__DIR__)->load();
+
+$baseId = '<base_id>';
+
+$table = new Table('Content production');
+
+$airtableClient = new AirtableClient($baseId, $table);
+
+$client = $airtableClient->getClient();
+
+$content = $table->list($client, 'Content pipeline');
+
+echo $content->getBody()->getContents();
 ```
 
 ## Change log
@@ -45,6 +55,7 @@ echo $skeleton->echoPhrase('Hello, League!');
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
 ## Testing
+NO TESTS EXIST YET! COMING SOON!
 
 ``` bash
 $ composer test
