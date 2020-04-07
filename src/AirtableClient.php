@@ -50,7 +50,7 @@ class AirtableClient
     /**
      * @return Client|null
      */
-    function getClient() : Client
+    public function getClient(): Client
     {
         $this->client->request(
             'GET',
