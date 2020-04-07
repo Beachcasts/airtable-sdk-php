@@ -9,7 +9,7 @@
 namespace Beachcasts\Airtable;
 
 use GuzzleHttp\Client;
-use \Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class Table
@@ -36,7 +36,7 @@ class Table
      * @param string $view
      * @return ResponseInterface
      */
-    public function list(Client $connection, string $view = "Grid view") : ResponseInterface
+    public function list(Client $connection, string $view = "Grid view"): ResponseInterface
     {
         $list = $connection->request(
             'GET',
