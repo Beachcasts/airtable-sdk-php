@@ -54,7 +54,7 @@ class AirtableClient
     {
         $this->client->request(
             'GET',
-            $this->table->name,
+            $this->table->getName(),
             [
                 'headers' => [
                     'Authorization' => 'Bearer ' . $_ENV['API_KEY'],

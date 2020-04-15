@@ -1,0 +1,36 @@
+version: "3.7"
+services:
+
+  web:
+    build:
+      context: .
+      dockerfile: container-build/web/Dockerfile
+    environment:
+    - MYSQL_DATABASE=dbname
+    - MYSQL_USER=dbuser
+    - MYSQL_PASSWORD=654321
+    - MYSQL_HOST=db
+    extra_hosts:
+        - "host.docker.internal:${DOCKER_HOST_IP}"
+    ports:
+    - "8080:80"
+    volumes:
+    - .:/var/www/html
+    depends_on:
+    - db
+
+  db:
+    image: mysql:5.7
+    ports:
+    - "6603:3306"
+    environment:
+    - MYSQL_ROOT_PASSWORD=654321
+    - MYSQL_USER=dbuser
+    - MYSQL_PASSWORD=654321
+    - MYSQL_DATABASE=dbname
+    volumes:
+    - "mysql_data:/var/lib/mysql"
+    - ./data/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+
+volumes:
+  mysql_data: { driver: local }
