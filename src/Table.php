@@ -97,7 +97,7 @@ class Table
     {
         return $this->client->request(
             'GET',
-            $this->name . DIRECTORY_SEPARATOR . $id,
+            $this->name . '/' . $id,
             [
                 'headers' => [
                     'Authorization' => 'Bearer ' . $_ENV['API_KEY'],

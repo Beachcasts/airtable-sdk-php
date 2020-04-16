@@ -40,7 +40,7 @@ class AirtableClient
     public function __construct(string $baseId, Table $table)
     {
         $this->client = new Client([
-            'base_uri' => $_ENV['BASE_URL'] . DIRECTORY_SEPARATOR . $_ENV['VERSION'] . DIRECTORY_SEPARATOR . $baseId . DIRECTORY_SEPARATOR
+            'base_uri' => $_ENV['BASE_URL'] . '/' . $_ENV['VERSION'] . '/' . $baseId . '/'
         ]);
 
         $this->baseId = $baseId;
