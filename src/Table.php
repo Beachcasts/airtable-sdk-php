@@ -55,13 +55,26 @@ class Table
     }
 
     /**
+     *
+     * Params could include the following:
+     *      fields = ['column_1_name', 'column_2_name', 'column_3_name]
+     *      filterByFormula = "NOT({Headline} = '')"
+     *      maxRecords = 100
+     *      pageSize = 100
+     *      sort = [{field: "Headline", direction: "desc"}]
+     *      view = "view_name"
+     *
+     * @param array $params
      * @return ResponseInterface
      */
-    public function list(): ResponseInterface
+    public function list(array $params = []): ResponseInterface
     {
+//        if (!empty($params)) $qsa = http_build_query($params) #as query string append
+        $url = $this->name . '?maxRecords=3&view=' . $this->viewName;
+
         return $this->client->request(
             'GET',
-            $this->name . '?maxRecords=3&view=' . $this->viewName,
+            $url,
             [
                 'headers' => [
                     'Authorization' => 'Bearer ' . $_ENV['API_KEY'],
@@ -107,13 +120,18 @@ class Table
     }
 
     /**
-     * @param $data
+     * @param string $data
+     * @param string $type accepts PUT to replace or PATCH to update records
      * @return mixed
      */
-    public function update(string $data)
+    public function update(string $data, $type = 'PATCH')
     {
+        if (!in_array(strtolower($type), ['put', 'patch'])) {
+            throw new \Exception('Invalid method', 405);
+        }
+
         return $this->client->request(
-            'PATCH',
+            strtoupper($type),
             $this->name,
             [
                 'headers' => [
