@@ -18,7 +18,8 @@ $client = $airtableClient->getClient();
 
 $table->setClient($client);
 
-//$content = $table->list();
+//$params = [];
+//$content = $table->list($params);
 
 //$data = '{
 //  "records": [
@@ -81,7 +82,7 @@ $table->setClient($client);
 //  ]
 // }';
 
-//$content = $table->update($data);
+//$content = $table->update($data, 'patch');
 
 //$id = 'recygQ7taueFlFHo6';
 //$content = $table->delete($id);
