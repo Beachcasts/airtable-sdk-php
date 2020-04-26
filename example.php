@@ -18,8 +18,8 @@ $client = $airtableClient->getClient();
 
 $table->setClient($client);
 
-//$params = [];
-//$content = $table->list($params);
+$params = [];
+$content = $table->list($params);
 
 //$data = '{
 //  "records": [
