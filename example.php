@@ -1,4 +1,5 @@
 <?php
+
 // example usage file
 require_once('vendor/autoload.php');
 
