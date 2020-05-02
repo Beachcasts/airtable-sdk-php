@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1588449761">
+  <project timestamp="1588449761">
+    <package name="Beachcasts\Airtable">
+      <file name="/opt/project/src/AirtableClient.php">
+        <class name="Beachcasts\Airtable\AirtableClient" namespace="Beachcasts\Airtable" fullPackage="Beachcasts" package="Beachcasts">
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="12" coveredelements="12"/>
+        </class>
+        <line num="40" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="42" type="stmt" count="1"/>
+        <line num="43" type="stmt" count="1"/>
+        <line num="46" type="stmt" count="1"/>
+        <line num="47" type="stmt" count="1"/>
+        <line num="48" type="stmt" count="1"/>
+        <line num="53" type="method" name="getClient" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="55" type="stmt" count="1"/>
+        <line num="56" type="stmt" count="1"/>
+        <line num="57" type="stmt" count="1"/>
+        <line num="60" type="stmt" count="1"/>
+        <line num="65" type="stmt" count="1"/>
+        <metrics loc="67" ncloc="41" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="12" coveredelements="12"/>
+      </file>
+      <file name="/opt/project/src/Table.php">
+        <class name="Beachcasts\Airtable\Table" namespace="Beachcasts\Airtable" fullPackage="Beachcasts" package="Beachcasts">
+          <metrics complexity="9" methods="8" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="33" coveredstatements="12" elements="41" coveredelements="16"/>
+        </class>
+        <line num="37" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="39" type="stmt" count="1"/>
+        <line num="40" type="stmt" count="1"/>
+        <line num="41" type="stmt" count="1"/>
+        <line num="46" type="method" name="setClient" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="48" type="stmt" count="1"/>
+        <line num="49" type="stmt" count="1"/>
+        <line num="54" type="method" name="getName" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="56" type="stmt" count="1"/>
+        <line num="72" type="method" name="list" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="75" type="stmt" count="0"/>
+        <line num="77" type="stmt" count="0"/>
+        <line num="78" type="stmt" count="0"/>
+        <line num="82" type="stmt" count="0"/>
+        <line num="92" type="method" name="create" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="94" type="stmt" count="1"/>
+        <line num="95" type="stmt" count="1"/>
+        <line num="96" type="stmt" count="1"/>
+        <line num="99" type="stmt" count="1"/>
+        <line num="100" type="stmt" count="1"/>
+        <line num="102" type="stmt" count="1"/>
+        <line num="111" type="method" name="read" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="113" type="stmt" count="0"/>
+        <line num="114" type="stmt" count="0"/>
+        <line num="115" type="stmt" count="0"/>
+        <line num="118" type="stmt" count="0"/>
+        <line num="130" type="method" name="update" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="132" type="stmt" count="0"/>
+        <line num="133" type="stmt" count="0"/>
+        <line num="136" type="stmt" count="0"/>
+        <line num="137" type="stmt" count="0"/>
+        <line num="138" type="stmt" count="0"/>
+        <line num="141" type="stmt" count="0"/>
+        <line num="142" type="stmt" count="0"/>
+        <line num="144" type="stmt" count="0"/>
+        <line num="153" type="method" name="delete" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="155" type="stmt" count="0"/>
+        <line num="156" type="stmt" count="0"/>
+        <line num="157" type="stmt" count="0"/>
+        <line num="160" type="stmt" count="0"/>
+        <line num="162" type="stmt" count="0"/>
+        <metrics loc="166" ncloc="108" classes="1" methods="8" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="33" coveredstatements="12" elements="41" coveredelements="16"/>
+      </file>
+    </package>
+    <package name="Beachcasts\Airtable\Exception">
+      <file name="/opt/project/src/Exception/AirtableException.php">
+        <class name="Beachcasts\Airtable\Exception\AirtableException" namespace="Beachcasts\Airtable\Exception">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="15" ncloc="9" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/opt/project/src/Exception/BadGatewayException.php">
+        <class name="Beachcasts\Airtable\Exception\BadGatewayException" namespace="Beachcasts\Airtable\Exception">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="22" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/opt/project/src/Exception/BadRequestException.php">
+        <class name="Beachcasts\Airtable\Exception\BadRequestException" namespace="Beachcasts\Airtable\Exception">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="22" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/opt/project/src/Exception/ForbiddenException.php">
+        <class name="Beachcasts\Airtable\Exception\ForbiddenException" namespace="Beachcasts\Airtable\Exception">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="22" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/opt/project/src/Exception/InternalServerErrorException.php">
+        <class name="Beachcasts\Airtable\Exception\InternalServerErrorException" namespace="Beachcasts\Airtable\Exception">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="22" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/opt/project/src/Exception/InvalidRequestException.php">
+        <class name="Beachcasts\Airtable\Exception\InvalidRequestException" namespace="Beachcasts\Airtable\Exception">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="22" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/opt/project/src/Exception/NotFoundException.php">
+        <class name="Beachcasts\Airtable\Exception\NotFoundException" namespace="Beachcasts\Airtable\Exception">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="22" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/opt/project/src/Exception/PaymentRequiredException.php">
+        <class name="Beachcasts\Airtable\Exception\PaymentRequiredException" namespace="Beachcasts\Airtable\Exception">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="22" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/opt/project/src/Exception/RequestEntityTooLargeException.php">
+        <class name="Beachcasts\Airtable\Exception\RequestEntityTooLargeException" namespace="Beachcasts\Airtable\Exception">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="22" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/opt/project/src/Exception/ServiceUnavailableException.php">
+        <class name="Beachcasts\Airtable\Exception\ServiceUnavailableException" namespace="Beachcasts\Airtable\Exception">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="22" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/opt/project/src/Exception/UnauthorizedException.php">
+        <class name="Beachcasts\Airtable\Exception\UnauthorizedException" namespace="Beachcasts\Airtable\Exception">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="22" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+    </package>
+    <metrics files="13" loc="468" ncloc="258" classes="2" methods="10" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="43" coveredstatements="22" elements="53" coveredelements="28"/>
+  </project>
+</coverage>

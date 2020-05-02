@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="" tests="2" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.579513">
+    <testsuite name="beachcasts Test Suite" tests="2" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.579513">
+      <testsuite name="Beachcasts\Airtable\ExampleTest" file="/opt/project/tests/ExampleTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.006175">
+        <testcase name="testTrueIsTrue" class="Beachcasts\Airtable\ExampleTest" classname="Beachcasts.Airtable.ExampleTest" file="/opt/project/tests/ExampleTest.php" line="12" assertions="1" time="0.006175"/>
+      </testsuite>
+      <testsuite name="Beachcasts\Airtable\TableTest" file="/opt/project/tests/TableTest.php" tests="1" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.573338">
+        <testcase name="testCreateRecord" class="Beachcasts\Airtable\TableTest" classname="Beachcasts.Airtable.TableTest" file="/opt/project/tests/TableTest.php" line="46" assertions="2" time="0.573338"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

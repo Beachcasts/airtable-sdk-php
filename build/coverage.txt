@@ -1,0 +1,14 @@
+
+
+Code Coverage Report:    
+  2020-05-02 20:02:41    
+                         
+ Summary:                
+  Classes: 50.00% (1/2)  
+  Methods: 60.00% (6/10) 
+  Lines:   51.16% (22/43)
+
+\Beachcasts\Airtable::Beachcasts\Airtable\AirtableClient
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% ( 10/ 10)
+\Beachcasts\Airtable::Beachcasts\Airtable\Table
+  Methods:  50.00% ( 4/ 8)   Lines:  36.36% ( 12/ 33)
