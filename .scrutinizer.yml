@@ -8,6 +8,7 @@ build:
         coverage:
             tests:
                 override:
+                  - command: ./run-my-tests
                     coverage:
                         file: build/logs/clover.xml
                         format: clover
