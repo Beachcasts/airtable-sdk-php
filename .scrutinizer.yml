@@ -8,7 +8,7 @@ build:
         coverage:
             tests:
                 override:
-                  -
+                  - command: php -v
                     coverage:
                         file: build/logs/clover.xml
                         format: clover
