@@ -24,6 +24,7 @@
     ],
     "require": {
         "php": "~7.2",
+        "ext-json": "*",
         "guzzlehttp/guzzle": "^6.5",
         "vlucas/phpdotenv": "3.5.x-dev"
     },

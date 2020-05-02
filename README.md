@@ -55,10 +55,16 @@ echo $content->getBody()->getContents();
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
 ## Testing
-NO TESTS EXIST YET! COMING SOON!
+Running the test suite requires the manual creation of a `Base` at Airtable. Log into your Airtable account and `Add a base` using the `Start from scratch` method. Let the new base creation retain the default `Untitled Base` name. You can customize as desired, but this will require you to also update the tests.
+
+Next, you will need the `base_id` in order to run the tests, as well as the `api_key`. By going to the [Airtable API docs](https://airtable.com/api) you can now click into the new test base and view the `base_id`. Likewise, you can check the box in the upper right to display the api key.
+
+Add the key and id to the `phpunit.xml`, which can be created from the `phpunit.xml.dist` file.
+
+Following that, tests can be run with the following command:
 
 ``` bash
-$ composer test
+$ vendor/bin/phpunit
 ```
 
 ## Contributing

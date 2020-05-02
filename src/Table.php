@@ -6,6 +6,8 @@
  * On: 26/03/2020
  */
 
+declare(strict_types=1);
+
 namespace Beachcasts\Airtable;
 
 use GuzzleHttp\Client;
@@ -123,11 +125,12 @@ class Table
      * @param string $data
      * @param string $type accepts PUT to replace or PATCH to update records
      * @return mixed
+     * @throws \Exception
      */
     public function update(string $data, $type = 'PATCH')
     {
         if (!in_array(strtolower($type), ['put', 'patch'])) {
-            throw new \Exception('Invalid method', 405);
+            throw new \Exception('Invalid method type.');
         }
 
         return $this->client->request(
