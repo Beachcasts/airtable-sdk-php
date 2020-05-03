@@ -18,5 +18,5 @@ class NotFoundException extends AirtableException
     /**
      * @var string
      */
-    protected $message = 'Route or resource is not found. This error is returned when the request hits an undefined route, or if the resource doesn\'t exist (e.g. has been deleted).';
+    protected $message = 'Route or resource not found.';
 }

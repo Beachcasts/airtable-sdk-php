@@ -18,5 +18,5 @@ class RequestEntityTooLargeException extends AirtableException
     /**
      * @var string
      */
-    protected $message = 'The request exceeded the maximum allowed payload size. You shouldn\'t encounter this under normal use.';
+    protected $message = 'The request exceeded the maximum allowed payload size.';
 }

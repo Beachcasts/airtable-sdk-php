@@ -18,5 +18,5 @@ class UnauthorizedException extends AirtableException
     /**
      * @var string
      */
-    protected $message = 'Accessing a protected resource without authorization or with invalid credentials.';
+    protected $message = 'Accessing a protected resource without authorization or invalid credentials.';
 }

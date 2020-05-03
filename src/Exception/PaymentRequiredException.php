@@ -18,5 +18,5 @@ class PaymentRequiredException extends AirtableException
     /**
      * @var string
      */
-    protected $message = 'The account associated with the API key making requests hits a quota that can be increased by upgrading the Airtable account plan.';
+    protected $message = 'Airtable quote hit for this account.';
 }

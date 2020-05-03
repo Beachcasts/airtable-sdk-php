@@ -18,5 +18,5 @@ class ForbiddenException extends AirtableException
     /**
      * @var string
      */
-    protected $message = 'Accessing a protected resource with API credentials that don\'t have access to that resource.';
+    protected $message = 'Accessing a protected resource with bad API credentials.';
 }
