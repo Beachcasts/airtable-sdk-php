@@ -69,10 +69,12 @@ class Table
      * @param array $params
      * @return ResponseInterface
      */
-    public function list(array $params = []): ResponseInterface
+    public function list(array $params = ['maxRecords' =>3, 'view' => $this->viewName]): ResponseInterface
     {
-//        if (!empty($params)) $qsa = http_build_query($params) #as query string append
-        $url = $this->name . '?maxRecords=3&view=' . $this->viewName;
+//        if (!empty($params))
+        $queryString = http_build_query($params);
+
+        $url = $this->name . '?' . $queryString;
 
         return $this->client->request(
             'GET',
