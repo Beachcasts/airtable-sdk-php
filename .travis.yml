@@ -1,32 +1,32 @@
 dist: trusty
 language: php
-
 php:
-  - 7.2
-  - 7.3
-  - 7.4
-  - hhvm
-
-## Cache composer
+- 7.2
+- 7.3
+- 7.4
+- hhvm
+env:
+  global:
+  - secure: Os/OoiFBONyXB9FgitbJlEn0pmVYaGOO6l/BGDv7ecVlRNf8+qqeWggkqnO7AQnBlLn9YSkHRAmTCTaRKFqcIGW0dAr+m41WjvBLlANCvbHpCrjK7tVLvP/F4T2OnLZoQwDHnkz7MCMYurzqvVKTeTtZ1oKlko9zjr4WoVQiitlWLzMzgBHR6OZXaPRnvXlc4uGfu7Whle7RCujNyYlNX33CcE/p9tnYGYq2WHe5+2iDjMOafdQY01MBUlBJZqpARlxAXzjF71VRP+eXAfm/bDd0SnDzcu4m5zIsaB+hpeiSb8FVsbhxw1awHGsv/+L3PYdAdAY6YI2MD+pUewzb1keVNPqeiDqXvfomcG7iqaQ4yrh55yi5FLpGJrqMbDX4K0LrAYHGQVKytR9A96L+oY2duORYptCs1dinT3TaiNrEwONEnvw41K/ptCGh8u7kx1u68wSrw9h8W1aBCnotG2w3Z6LFzrbQd/zOe9+SiRQ3DriOdkooWUyCHRHPz4V0CEWB5Cd4CrFKhewNP/A8VwjFrfNu6CTvzn/lmH+q6n6JjgszFhu9bAGRmL4ijGSqQzT1eJmjktpkAdYtvlM8HNtb41RDTHAcp0VOSahwktKrVEOk+qe6SQ2QLyhoEtcjCOfdw9L+2Snqp9+oFZaG6+88o+QYOGcGcO9hl7x6RBU=
+  - secure: h/3tho/ag9lIVzM8/htL0WGb59WpeqiucBJezkkKT1S+868tfXhT77tPHhL6Rk4UAFZe5uGaqcWU0BrA92emzPJCyCS5hBOjk1mckTjYQxsNAl4Cj2s7JTbyB4gRGHbxBy86QAqUEJYa3Wx6EWqFtIVIhBXzgVgwTeN+2O/zkYBVmH4p1ufUbryz6zO1AIxpDcvUN7EAujSjltmJKEhD8LCa1W5qf76GhBhpRFIi/u2F4pbpnJiAUtt7OcmW1Ps3U2ZGKQ455eJhwJKJHAqUa5CyN39Mo/RXOexGLfCauseBHYMYW9NoiEwP8hR03Gcdk3TRE1oSmd4SA6TFEAcrYYHfr8NFJhnUnjHl2JuhMwggCHF3hbGagt+CwVojmXlGf0wf91Onh0Cupct/EoIV/0YzlKZ9kI3zuTQHa6da6qpgHzyZ5pTrCe7tUNktY+gn9JTV0HlMHnsKCUlZ97XTiElfLXlc0f2FeapTPb2faDii/uIq3m25YxpUWwrwiLPJ8KS2bg2+nG+rw+MjXzK0G6KcO5vIs0f4i4/H97EoiTjVPE3SwviBD+LnhHb4yiepxafDYh+EGMRdGzYm07itD7jJMVfKmioZ3LEq0UdHqgzu3JkYec/I3azgSyAaLxf8gHL7ILUhdRGO3D1TeOXlJ/Elb5lxhscgcvaEUJpbWmg=
+  - secure: rk1BXIKl7YXQWX8n5znDDS0kfRZzcJ2Qkrkg03DUAX1pxa2Q/eoFYdtb6cDgc6rHEwJ0xe/zFwZjqg7iOa2fJW3ZlLr+I2gTewDJ1YcZldtlTNQNcUg4j0Ki3pUC/JId9SP63M68WuSD+XjsnLcpCM5IvBpxcQRgLHbetGcdgh0fqokJpV14RknJBji6IGOINdwOgEGzp1WR9uLqYedHOMrNO3i2n4pju2afdJbmYB+1bGGvhQqucH/fv0HMixQtWgdNqjsurT9NlHs7z4VpMSiKRm3loYNLSvaUgYoiN4s7wgXtUE8926YYiGu3Y4kySRm4c2GDdWvpJaEmJQaDPYOwrj4OoN1zTD/FTQQgrHGSkv7DAZ3ct+bcWTz4BpmpU6/B7SOvDROSTNPeLlJocfzI287CpGYdnhe9lPyw8+U3emXnJ0KEo6qMboTkVjLPAygR1gMAwNz8yewtzYy4q1YTGqkd7LmOe34b0VlhLVrHb/87H3pHh9UJsCw22SL3y+jE84R8dzR1mjKrgfn+Ph0NY88/3oiaep7NXRIytmLJ3fqVB6PF/gweRP1bOT6xQwrgKVMX/BziWblWFXkdfTXYgzSDi5hLqXCXpMqY211bnP1MC530FXO6LcKQtoLhJpUwm87uDSGu5TNh7Jc1AjJ7lZZObY2SNUvR0OTKcbQ=
+  - secure: R0aAEHfuhWJx3keC+QTTDRk10e0Buq+2MMLKX6qyvV2S7+Dz6Yj6lf/s6sMIL3g8KGhXcWXPJJG6BRBJCcY12EokCnrRvNDTnqsCbnQvrVLRoCJvPq8KdoEZi8HaELO5kF4IvqtboCrlJmjMRsbbbaV6zOYGCrE/SoISzNDsOT0yTc09wJ12noBIjuE8FeVPnlM30G+fTl8KUpxjrpYvgFl3iMd5obx//xoSf5TpDjI8F4+fxX4nALdm5g4sPbnehfCAcEraOrfs+q6gt+Do1VtWPYp+NPJ67FggKDHMhb52lWkSi3ZGCykFonNx6bMsCyF7vf9FBC09RQzWibuZ7oT3cInMGAGUkYXPdYyBzxSOHuluA+Kb2u66Hbubsz3JxUJg/fOo2fJhui3/CrFINh+ih3pe7VI7sf1oZF4wi2CRqAiycZA5ySaYTuG2oygtPk3TaBFma1bPeoIAS7OzGwx48jLSGV3HXCEFDxPLfQN78npb0lEp3+ccKH/tOO3yK9PsgGmu0b6H3Cn5FpV+OkV+CuApK50DviACeCf4u1VxC6+tYI41yzp624tUT4G5RezDtU+6xlEsUStfVs2Rf1IeRyHDSfXODOVgMhQ+VDWrPwUnwfaw0doLi+O4bMknHfIXi5AdCtTO4iflBp5BOJWtNTuLX7J6ECQ5uLCpmbc=
 cache:
   directories:
-    - $HOME/.composer/cache
-
+  - "$HOME/.composer/cache"
 matrix:
   include:
-    - php: 7.2
-      env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
-
+  - php: 7.2
+    env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest"
 before_script:
-  - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-dist
-
+- travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-dist
+- touch .env
 script:
-  - vendor/bin/phpcs --standard=psr2 src/
-  - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
-
+- vendor/bin/phpcs --standard=psr2 src/
+- vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
 after_script:
-  - |
-    if [[ "$TRAVIS_PHP_VERSION" != 'hhvm' ]]; then
-      wget https://scrutinizer-ci.com/ocular.phar
-      php ocular.phar code-coverage:upload --format=php-clover coverage.clover
-    fi
+- |
+  if [[ "$TRAVIS_PHP_VERSION" != 'hhvm' ]]; then
+    wget https://scrutinizer-ci.com/ocular.phar
+    php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+  fi
