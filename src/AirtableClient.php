@@ -40,7 +40,7 @@ class AirtableClient
     public function __construct(string $baseId, Table $table)
     {
         $this->client = new Client([
-            'base_uri' => $_ENV['BASE_URL'] . '/' . $_ENV['VERSION'] . '/' . $baseId . '/'
+            'base_uri' => getenv('BASE_URL') . '/' . getenv('VERSION') . '/' . $baseId . '/'
         ]);
 
         $this->baseId = $baseId;
@@ -57,7 +57,7 @@ class AirtableClient
             $this->table->getName(),
             [
                 'headers' => [
-                    'Authorization' => 'Bearer ' . $_ENV['API_KEY'],
+                    'Authorization' => 'Bearer ' . getenv('API_KEY'),
                 ]
             ]
         );

@@ -79,7 +79,7 @@ class Table
             $url,
             [
                 'headers' => [
-                    'Authorization' => 'Bearer ' . $_ENV['API_KEY'],
+                    'Authorization' => 'Bearer ' . getenv('API_KEY'),
                 ]
             ]
         );
@@ -96,7 +96,7 @@ class Table
             $this->name,
             [
                 'headers' => [
-                    'Authorization' => 'Bearer ' . $_ENV['API_KEY'],
+                    'Authorization' => 'Bearer ' . getenv('API_KEY'),
                     'Content-Type' => 'application/json',
                 ],
                 'body' => $data,
@@ -115,7 +115,7 @@ class Table
             $this->name . '/' . $id,
             [
                 'headers' => [
-                    'Authorization' => 'Bearer ' . $_ENV['API_KEY'],
+                    'Authorization' => 'Bearer ' . getenv('API_KEY'),
                 ],
             ]
         );
@@ -138,7 +138,7 @@ class Table
             $this->name,
             [
                 'headers' => [
-                    'Authorization' => 'Bearer ' . $_ENV['API_KEY'],
+                    'Authorization' => 'Bearer ' . getenv('API_KEY'),
                     'Content-Type' => 'application/json',
                 ],
                 'body' => $data,
@@ -157,7 +157,7 @@ class Table
             $this->name,
             [
                 'headers' => [
-                    'Authorization' => 'Bearer ' . $_ENV['API_KEY'],
+                    'Authorization' => 'Bearer ' . getenv('API_KEY'),
                 ],
                 'query' => ['records[]' => $id],
             ]
