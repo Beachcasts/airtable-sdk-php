@@ -69,17 +69,24 @@ class Table
      * @param array $params
      * @return ResponseInterface
      */
-    public function list(array $params = []): ResponseInterface
+    public function list(array $params): ResponseInterface
     {
-//        if (!empty($params)) $qsa = http_build_query($params) #as query string append
-        $url = $this->name . '?maxRecords=3&view=' . $this->viewName;
+        $params = [
+            'maxRecords' =>3,
+            'view' => $this->viewName
+        ];
+
+//        if (!empty($params))
+        $queryString = http_build_query($params);
+
+        $url = $this->name . '?' . $queryString;
 
         return $this->client->request(
             'GET',
             $url,
             [
                 'headers' => [
-                    'Authorization' => 'Bearer ' . $_ENV['API_KEY'],
+                    'Authorization' => 'Bearer ' . getenv('API_KEY'),
                 ]
             ]
         );
@@ -96,7 +103,7 @@ class Table
             $this->name,
             [
                 'headers' => [
-                    'Authorization' => 'Bearer ' . $_ENV['API_KEY'],
+                    'Authorization' => 'Bearer ' . getenv('API_KEY'),
                     'Content-Type' => 'application/json',
                 ],
                 'body' => $data,
@@ -115,7 +122,7 @@ class Table
             $this->name . '/' . $id,
             [
                 'headers' => [
-                    'Authorization' => 'Bearer ' . $_ENV['API_KEY'],
+                    'Authorization' => 'Bearer ' . getenv('API_KEY'),
                 ],
             ]
         );
@@ -138,7 +145,7 @@ class Table
             $this->name,
             [
                 'headers' => [
-                    'Authorization' => 'Bearer ' . $_ENV['API_KEY'],
+                    'Authorization' => 'Bearer ' . getenv('API_KEY'),
                     'Content-Type' => 'application/json',
                 ],
                 'body' => $data,
@@ -157,7 +164,7 @@ class Table
             $this->name,
             [
                 'headers' => [
-                    'Authorization' => 'Bearer ' . $_ENV['API_KEY'],
+                    'Authorization' => 'Bearer ' . getenv('API_KEY'),
                 ],
                 'query' => ['records[]' => $id],
             ]

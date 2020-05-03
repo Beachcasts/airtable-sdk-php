@@ -18,5 +18,5 @@ class InvalidRequestException extends AirtableException
     /**
      * @var string
      */
-    protected $message = 'The request data is invalid. This includes most of the base-specific validations. You will receive a detailed error message and code pointing to the exact issue.';
+    protected $message = 'The request data is invalid.';
 }

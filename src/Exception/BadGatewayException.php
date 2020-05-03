@@ -18,5 +18,5 @@ class BadGatewayException extends AirtableException
     /**
      * @var string
      */
-    protected $message = 'Airtable\'s servers are restarting or an unexpected outage is in progress. You should generally not receive this error, and requests are safe to retry.';
+    protected $message = 'Airtable\'s servers are restarting, or an unexpected outage happened.';
 }

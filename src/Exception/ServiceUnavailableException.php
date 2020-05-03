@@ -18,5 +18,5 @@ class ServiceUnavailableException extends AirtableException
     /**
      * @var string
      */
-    protected $message = 'The server could not process your request in time. The server could be temporarily unavailable, or it could have timed out processing your request. You should retry the request with backoffs.';
+    protected $message = 'The server could not process your request in time.';
 }
