@@ -39,13 +39,10 @@ Dotenv\Dotenv::create(__DIR__)->load();
 
 $baseId = '<base_id>';
 
+$airtableClient = new AirtableClient($baseId);
+
 $table = new Table('Content production');
-
-$airtableClient = new AirtableClient($baseId, $table);
-
-$client = $airtableClient->getClient();
-
-$content = $table->list($client, 'Content pipeline');
+$content = $table->list($airtableClient->getClient(), 'Content pipeline');
 
 echo $content->getBody()->getContents();
 ```
