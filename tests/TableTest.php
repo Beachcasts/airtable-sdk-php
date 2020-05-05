@@ -23,9 +23,10 @@ class TableTest extends TestCase
         Dotenv::create(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR)->load();
 
         $airtableClient = new AirtableClient(getenv('TEST_BASE_ID'));
+        $client = $airtableClient->getClient();
 
         $this->table = new Table(getenv('TEST_TABLE_NAME'), getenv('TEST_VIEW_NAME'));
-        $this->table->setClient($airtableClient->getClient());
+        $this->table->setClient($client);
 
         $this->data = [
             'records' => [
