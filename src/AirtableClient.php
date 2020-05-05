@@ -27,11 +27,6 @@ class AirtableClient
     protected $client = null;
 
     /**
-     * @var Table|null
-     */
-    protected $table = null;
-
-    /**
      * Airtable constructor. Create a new Airtable Instance
      *
      * @param string $baseId
