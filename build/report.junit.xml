@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="" tests="3" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.720253">
-    <testsuite name="beachcasts Test Suite" tests="3" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.720253">
-      <testsuite name="Beachcasts\Airtable\ExampleTest" file="/opt/project/tests/ExampleTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.006076">
-        <testcase name="testTrueIsTrue" class="Beachcasts\Airtable\ExampleTest" classname="Beachcasts.Airtable.ExampleTest" file="/opt/project/tests/ExampleTest.php" line="12" assertions="1" time="0.006076"/>
+  <testsuite name="" tests="3" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.949406">
+    <testsuite name="beachcasts Test Suite" tests="3" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.949406">
+      <testsuite name="Beachcasts\Airtable\ExampleTest" file="/opt/project/tests/ExampleTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.003968">
+        <testcase name="testTrueIsTrue" class="Beachcasts\Airtable\ExampleTest" classname="Beachcasts.Airtable.ExampleTest" file="/opt/project/tests/ExampleTest.php" line="12" assertions="1" time="0.003968"/>
       </testsuite>
-      <testsuite name="Beachcasts\Airtable\TableTest" file="/opt/project/tests/TableTest.php" tests="2" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.714177">
-        <testcase name="testCreateRecord" class="Beachcasts\Airtable\TableTest" classname="Beachcasts.Airtable.TableTest" file="/opt/project/tests/TableTest.php" line="42" assertions="2" time="0.706973"/>
-        <testcase name="testUpdateRecord" class="Beachcasts\Airtable\TableTest" classname="Beachcasts.Airtable.TableTest" file="/opt/project/tests/TableTest.php" line="65" assertions="1" time="0.007204"/>
+      <testsuite name="Beachcasts\Airtable\TableTest" file="/opt/project/tests/TableTest.php" tests="2" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.945438">
+        <testcase name="testCreateRecord" class="Beachcasts\Airtable\TableTest" classname="Beachcasts.Airtable.TableTest" file="/opt/project/tests/TableTest.php" line="43" assertions="2" time="0.938605"/>
+        <testcase name="testUpdateRecord" class="Beachcasts\Airtable\TableTest" classname="Beachcasts.Airtable.TableTest" file="/opt/project/tests/TableTest.php" line="66" assertions="1" time="0.006833"/>
       </testsuite>
     </testsuite>
   </testsuite>

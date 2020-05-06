@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1588719000">
-  <project timestamp="1588719000">
+<coverage generated="1588729623">
+  <project timestamp="1588729623">
     <package name="Beachcasts\Airtable">
       <file name="/opt/project/src/AirtableClient.php">
         <class name="Beachcasts\Airtable\AirtableClient" namespace="Beachcasts\Airtable" fullPackage="Beachcasts" package="Beachcasts">
