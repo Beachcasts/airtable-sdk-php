@@ -88,15 +88,7 @@ class Table
 
         $url = $this->tableName . '?' . $queryString;
 
-        return $this->client->request(
-            'GET',
-            $url,
-            [
-                'headers' => [
-                    'Authorization' => 'Bearer ' . getenv('API_KEY'),
-                ]
-            ]
-        );
+        return $this->client->request('GET', $url);
     }
 
     /**
@@ -116,15 +108,7 @@ class Table
      */
     public function read(string $id)
     {
-        return $this->client->request(
-            'GET',
-            $this->tableName . '/' . $id,
-            [
-                'headers' => [
-                    'Authorization' => 'Bearer ' . getenv('API_KEY'),
-                ],
-            ]
-        );
+        return $this->client->request('GET', $this->tableName . '/' . $id);
     }
 
     /**
@@ -144,7 +128,6 @@ class Table
             $this->tableName,
             [
                 'headers' => [
-                    'Authorization' => 'Bearer ' . getenv('API_KEY'),
                     'Content-Type' => 'application/json',
                 ],
                 'body' => $data,
@@ -162,9 +145,6 @@ class Table
             'DELETE',
             $this->tableName,
             [
-                'headers' => [
-                    'Authorization' => 'Bearer ' . getenv('API_KEY'),
-                ],
                 'query' => ['records[]' => $id],
             ]
         );
