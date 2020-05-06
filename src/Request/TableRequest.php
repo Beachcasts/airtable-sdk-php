@@ -7,7 +7,7 @@ namespace Beachcasts\Airtable\Request;
 use Assert\Assert;
 use GuzzleHttp\Psr7\Request;
 
-class Table extends Request
+class TableRequest extends Request
 {
     public static function createRecords(string $tableName, array $records): Request
     {

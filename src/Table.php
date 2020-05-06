@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Beachcasts\Airtable;
 
-use Beachcasts\Airtable\Request\Table as TableRequest;
+use Beachcasts\Airtable\Request\TableRequest as TableRequest;
 use GuzzleHttp\Client;
 use Psr\Http\Message\ResponseInterface;
 
