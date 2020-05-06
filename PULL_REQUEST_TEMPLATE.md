@@ -1,5 +1,7 @@
 <!--- Provide a general summary of your changes in the Title above -->
 
+<!--- NOTE: Travis build will fail in PRs due to Beachcasts encrypted api_key, but should succeed in merges.  -->
+
 ## Description
 
 Describe your changes in detail.
