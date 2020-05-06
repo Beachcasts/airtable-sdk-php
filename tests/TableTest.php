@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Beachcasts\Airtable;
 
-use PHPUnit\Framework\TestCase;
-use Beachcasts\Airtable\Table as Table;
 use Beachcasts\Airtable\AirtableClient as AirtableClient;
+use Beachcasts\Airtable\Table as Table;
 use Dotenv\Dotenv;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class TableTest
@@ -39,11 +39,11 @@ class TableTest extends TestCase
         ];
     }
 
-    public function testCreateRecord() : array
+    public function testCreateRecord(): array
     {
         $response = $this->table->create($this->data['records']);
 
-        $result = json_decode((string) $response->getBody(), true);
+        $result = json_decode((string)$response->getBody(), true);
 
         $this->assertEquals(
             '200',

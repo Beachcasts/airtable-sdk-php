@@ -58,12 +58,12 @@ class AirtableClient
     /**
      * @return Client|null
      */
-    public function getClient() : Client
+    public function getClient(): Client
     {
         return $this->client;
     }
 
-    public function getTable(string $tableName, string $viewName = "Grid view") : Table
+    public function getTable(string $tableName, string $viewName = "Grid view"): Table
     {
         $table = new Table($tableName, $viewName);
         $table->setClient($this->client);

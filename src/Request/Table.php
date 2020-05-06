@@ -9,7 +9,7 @@ use Beachcasts\Airtable\Request;
 
 class Table extends Request
 {
-    public static function createRecords(string $tableName, array $records) : Request
+    public static function createRecords(string $tableName, array $records): Request
     {
         Assert::thatAll($records)
             ->keyExists('fields');

@@ -50,7 +50,7 @@ class Table
     /**
      * @param Client $client
      */
-    public function setClient(Client $client) : void
+    public function setClient(Client $client): void
     {
         $this->client = $client;
     }
@@ -58,7 +58,7 @@ class Table
     /**
      * @return string|null
      */
-    public function getName() : ?string
+    public function getName(): ?string
     {
         return $this->tableName;
     }
@@ -76,11 +76,11 @@ class Table
      * @param array $params
      * @return ResponseInterface
      */
-    public function list(array $params) : ResponseInterface
+    public function list(array $params): ResponseInterface
     {
         $params = [
             'maxRecords' => 3,
-            'view'       => $this->viewName
+            'view' => $this->viewName
         ];
 
 //        if (!empty($params))
@@ -145,9 +145,9 @@ class Table
             [
                 'headers' => [
                     'Authorization' => 'Bearer ' . getenv('API_KEY'),
-                    'Content-Type'  => 'application/json',
+                    'Content-Type' => 'application/json',
                 ],
-                'body'    => $data,
+                'body' => $data,
             ]
         );
     }
@@ -165,7 +165,7 @@ class Table
                 'headers' => [
                     'Authorization' => 'Bearer ' . getenv('API_KEY'),
                 ],
-                'query'   => ['records[]' => $id],
+                'query' => ['records[]' => $id],
             ]
         );
     }

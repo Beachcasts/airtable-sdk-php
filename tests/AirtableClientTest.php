@@ -11,15 +11,15 @@ use PHPUnit\Framework\TestCase;
 
 class AirtableClientTest extends TestCase
 {
-    protected function setUp() : void
+    protected function setUp(): void
     {
         Dotenv::create(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR)->load();
     }
 
-    public function testThatCreationSetsUpClient() : void
+    public function testThatCreationSetsUpClient(): void
     {
         $randomId = sha1(random_bytes(10));
-        $client   = new AirtableClient($randomId);
+        $client = new AirtableClient($randomId);
 
         $property = new \ReflectionProperty(AirtableClient::class, 'client');
         $property->setAccessible(true);
@@ -34,7 +34,7 @@ class AirtableClientTest extends TestCase
     public function testThatGetTableReturnsCorrectlyConfiguredTableObject(): void
     {
         $randomId = sha1(random_bytes(10));
-        $client   = new AirtableClient($randomId);
+        $client = new AirtableClient($randomId);
 
         $tableName = sha1(random_bytes(10));
         $viewMode = sha1(random_bytes(10));
