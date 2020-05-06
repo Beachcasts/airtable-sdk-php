@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Beachcasts\Airtable\Request;
 
 use Assert\Assert;
-use Beachcasts\Airtable\Request;
+use GuzzleHttp\Psr7\Request;
 
 class Table extends Request
 {
