@@ -6,3 +6,6 @@ phpcs.xml
 .vscode
 .env
 example.php
+build/coverage
+build/*
+!build/logs
