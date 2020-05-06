@@ -2,14 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Beachcasts\Airtable;
+namespace Beachcasts\AirtableTests;
 
-class ExampleTest extends \PHPUnit\Framework\TestCase
+use PHPUnit\Framework\TestCase;
+
+class ExampleTest extends TestCase
 {
     /**
      * Test that true does in fact equal true.
      */
-    public function testTrueIsTrue()
+    public function testTrueIsTrue(): void
     {
         $this->assertTrue(true);
     }

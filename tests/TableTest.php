@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Beachcasts\Airtable;
+namespace Beachcasts\AirtableTests;
 
-use PHPUnit\Framework\TestCase;
-use Beachcasts\Airtable\Table as Table;
 use Beachcasts\Airtable\AirtableClient as AirtableClient;
+use Beachcasts\Airtable\Table;
 use Dotenv\Dotenv;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class TableTest
@@ -20,13 +20,12 @@ class TableTest extends TestCase
 
     protected function setUp(): void
     {
-        Dotenv::create(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR)->load();
-
-        $airtableClient = new AirtableClient(getenv('TEST_BASE_ID'));
-        $client = $airtableClient->getClient();
+        Dotenv::createImmutable(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR)->load();
 
         $this->table = new Table(getenv('TEST_TABLE_NAME'), getenv('TEST_VIEW_NAME'));
-        $this->table->setClient($client);
+
+        $airtableClient = new AirtableClient(getenv('API_KEY'), getenv('TEST_BASE_ID'));
+        $this->table->setClient($airtableClient->getClient());
 
         $this->data = [
             'records' => [
@@ -40,19 +39,22 @@ class TableTest extends TestCase
         ];
     }
 
-    public function testCreateRecord()
+    public function testCreateRecord(): array
     {
-        $response = $this->table->create(json_encode($this->data));
+        $response = $this->table->create($this->data['records']);
 
-        $result = json_decode((string) $response->getBody(), true);
+        $result = json_decode((string)$response->getBody(), true);
 
-        $this->assertTrue(
-            $response->getStatusCode() == '200',
+        $this->assertEquals(
+            '200',
+            $response->getStatusCode(),
             'API did not return HTTP 200'
         );
 
-        $this->assertTrue(
-            $result['records'][0]['fields']['Name'] == 'Name Test',
+
+        $this->assertEquals(
+            'Name Test',
+            $result['records'][0]['fields']['Name'],
             'Record did not contain the correct Name.'
         );
 
@@ -63,7 +65,7 @@ class TableTest extends TestCase
      * @depends testCreateRecord
      * @param array $result
      */
-    public function testUpdateRecord(array $result)
+    public function testUpdateRecord(array $result): void
     {
 //        $recordId = $result['records'][0]['id'];
 
