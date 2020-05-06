@@ -65,11 +65,7 @@ class TableTest extends TestCase
      */
     public function testUpdateRecord(array $result)
     {
-        $recordId = $result['records'][0]['id'];
-
-
-        // @todo this method not finished
-//        print_r($result);
+//        $recordId = $result['records'][0]['id'];
 
         $this->assertTrue(true);
     }
