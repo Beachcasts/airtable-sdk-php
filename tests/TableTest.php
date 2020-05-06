@@ -22,11 +22,10 @@ class TableTest extends TestCase
     {
         Dotenv::create(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR)->load();
 
-        $airtableClient = new AirtableClient(getenv('TEST_BASE_ID'));
-        $client = $airtableClient->getClient();
-
         $this->table = new Table(getenv('TEST_TABLE_NAME'), getenv('TEST_VIEW_NAME'));
-        $this->table->setClient($client);
+
+        $airtableClient = new AirtableClient(getenv('TEST_BASE_ID'));
+        $this->table->setClient($airtableClient->getClient());
 
         $this->data = [
             'records' => [
@@ -40,19 +39,22 @@ class TableTest extends TestCase
         ];
     }
 
-    public function testCreateRecord()
+    public function testCreateRecord() : array
     {
-        $response = $this->table->create(json_encode($this->data));
+        $response = $this->table->create($this->data['records']);
 
         $result = json_decode((string) $response->getBody(), true);
 
-        $this->assertTrue(
-            $response->getStatusCode() == '200',
+        $this->assertEquals(
+            '200',
+            $response->getStatusCode(),
             'API did not return HTTP 200'
         );
 
-        $this->assertTrue(
-            $result['records'][0]['fields']['Name'] == 'Name Test',
+
+        $this->assertEquals(
+            'Name Test',
+            $result['records'][0]['fields']['Name'],
             'Record did not contain the correct Name.'
         );
 

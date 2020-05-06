@@ -27,15 +27,30 @@ class AirtableClient
     protected $client = null;
 
     /**
+<<<<<<< Updated upstream
+=======
+     * @var string
+     */
+    private $tableName;
+
+    /**
+     * @var string
+     */
+    private $defaultView;
+
+    /**
+>>>>>>> Stashed changes
      * Airtable constructor. Create a new Airtable Instance
      *
      * @param string $baseId
      */
     public function __construct(string $baseId)
     {
-        $this->client = new Client([
-            'base_uri' => getenv('BASE_URL') . '/' . getenv('VERSION') . '/' . $baseId . '/'
-        ]);
+        $this->client = new Client(
+            [
+                'base_uri' => getenv('BASE_URL') . '/' . getenv('VERSION') . '/' . $baseId . '/'
+            ]
+        );
 
         $this->baseId = $baseId;
     }
@@ -43,8 +58,16 @@ class AirtableClient
     /**
      * @return Client|null
      */
-    public function getClient(): Client
+    public function getClient() : Client
     {
         return $this->client;
+    }
+
+    public function getTable(string $tableName, string $viewName = "Grid view") : Table
+    {
+        $table = new Table($tableName, $viewName);
+        $table->setClient($this->client);
+
+        return $table;
     }
 }
