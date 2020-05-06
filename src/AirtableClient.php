@@ -15,31 +15,18 @@ class AirtableClient
     /**
      * Base identifier
      *
-     * @var null
+     * @var null|string $baseId
      */
-    protected $baseId = null;
+    protected $baseId;
 
     /**
      * Guzzle client object
      *
      * @var Client|null
      */
-    protected $client = null;
+    protected $client;
 
     /**
-<<<<<<< Updated upstream
-=======
-     * @var string
-     */
-    private $tableName;
-
-    /**
-     * @var string
-     */
-    private $defaultView;
-
-    /**
->>>>>>> Stashed changes
      * Airtable constructor. Create a new Airtable Instance
      *
      * @param string $baseId
