@@ -22,7 +22,7 @@ class Table
     /**
      * @var string|null
      */
-    protected $name = null;
+    protected $tableName = null;
 
     protected $client;
 
@@ -31,12 +31,12 @@ class Table
     /**
      * Table constructor.
      *
-     * @param string $name
+     * @param string $tableName
      * @param string $viewName
      */
-    public function __construct(string $name, string $viewName = "Grid view")
+    public function __construct(string $tableName, string $viewName = "Grid view")
     {
-        $this->name = $name;
+        $this->tableName = $tableName;
         $this->viewName = $viewName;
     }
 
@@ -53,7 +53,7 @@ class Table
      */
     public function getName()
     {
-        return $this->name;
+        return $this->tableName;
     }
 
     /**
@@ -79,7 +79,7 @@ class Table
 //        if (!empty($params))
         $queryString = http_build_query($params);
 
-        $url = $this->name . '?' . $queryString;
+        $url = $this->tableName . '?' . $queryString;
 
         return $this->client->request(
             'GET',
@@ -100,7 +100,7 @@ class Table
     {
         return $this->client->request(
             'POST',
-            $this->name,
+            $this->tableName,
             [
                 'headers' => [
                     'Authorization' => 'Bearer ' . getenv('API_KEY'),
@@ -119,7 +119,7 @@ class Table
     {
         return $this->client->request(
             'GET',
-            $this->name . '/' . $id,
+            $this->tableName . '/' . $id,
             [
                 'headers' => [
                     'Authorization' => 'Bearer ' . getenv('API_KEY'),
@@ -142,7 +142,7 @@ class Table
 
         return $this->client->request(
             strtoupper($type),
-            $this->name,
+            $this->tableName,
             [
                 'headers' => [
                     'Authorization' => 'Bearer ' . getenv('API_KEY'),
@@ -161,7 +161,7 @@ class Table
     {
         return $this->client->request(
             'DELETE',
-            $this->name,
+            $this->tableName,
             [
                 'headers' => [
                     'Authorization' => 'Bearer ' . getenv('API_KEY'),
