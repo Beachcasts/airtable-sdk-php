@@ -27,24 +27,17 @@ class AirtableClient
     protected $client = null;
 
     /**
-     * @var Table|null
-     */
-    protected $table = null;
-
-    /**
      * Airtable constructor. Create a new Airtable Instance
      *
      * @param string $baseId
-     * @param Table $table
      */
-    public function __construct(string $baseId, Table $table)
+    public function __construct(string $baseId)
     {
         $this->client = new Client([
             'base_uri' => getenv('BASE_URL') . '/' . getenv('VERSION') . '/' . $baseId . '/'
         ]);
 
         $this->baseId = $baseId;
-        $this->table = $table;
     }
 
     /**
@@ -52,16 +45,6 @@ class AirtableClient
      */
     public function getClient(): Client
     {
-        $this->client->request(
-            'GET',
-            $this->table->getName(),
-            [
-                'headers' => [
-                    'Authorization' => 'Bearer ' . getenv('API_KEY'),
-                ]
-            ]
-        );
-
         return $this->client;
     }
 }
