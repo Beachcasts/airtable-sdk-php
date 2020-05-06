@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace Beachcasts\Airtable;
 
+use Beachcasts\Airtable\Request\TableRequest as TableRequest;
 use GuzzleHttp\Client;
 use Psr\Http\Message\ResponseInterface;
 
@@ -20,12 +21,18 @@ use Psr\Http\Message\ResponseInterface;
 class Table
 {
     /**
-     * @var string|null
+     * @var string|null $tableName
      */
-    protected $tableName = null;
+    protected $tableName;
 
+    /**
+     * @var Client $client
+     */
     protected $client;
 
+    /**
+     * @var string $viewName
+     */
     protected $viewName;
 
     /**
@@ -43,7 +50,7 @@ class Table
     /**
      * @param Client $client
      */
-    public function setClient(Client $client)
+    public function setClient(Client $client): void
     {
         $this->client = $client;
     }
@@ -51,7 +58,7 @@ class Table
     /**
      * @return string|null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->tableName;
     }
@@ -72,7 +79,7 @@ class Table
     public function list(array $params): ResponseInterface
     {
         $params = [
-            'maxRecords' =>3,
+            'maxRecords' => 3,
             'view' => $this->viewName
         ];
 
@@ -81,33 +88,17 @@ class Table
 
         $url = $this->tableName . '?' . $queryString;
 
-        return $this->client->request(
-            'GET',
-            $url,
-            [
-                'headers' => [
-                    'Authorization' => 'Bearer ' . getenv('API_KEY'),
-                ]
-            ]
-        );
+        return $this->client->request('GET', $url);
     }
 
     /**
-     * @param string $data
+     * @param array $records
      * @return mixed
      */
-    public function create(string $data)
+    public function create(array $records)
     {
-        return $this->client->request(
-            'POST',
-            $this->tableName,
-            [
-                'headers' => [
-                    'Authorization' => 'Bearer ' . getenv('API_KEY'),
-                    'Content-Type' => 'application/json',
-                ],
-                'body' => $data,
-            ]
+        return $this->client->send(
+            TableRequest::createRecords($this->getName(), $records)
         );
     }
 
@@ -117,15 +108,7 @@ class Table
      */
     public function read(string $id)
     {
-        return $this->client->request(
-            'GET',
-            $this->tableName . '/' . $id,
-            [
-                'headers' => [
-                    'Authorization' => 'Bearer ' . getenv('API_KEY'),
-                ],
-            ]
-        );
+        return $this->client->request('GET', $this->tableName . '/' . $id);
     }
 
     /**
@@ -145,7 +128,6 @@ class Table
             $this->tableName,
             [
                 'headers' => [
-                    'Authorization' => 'Bearer ' . getenv('API_KEY'),
                     'Content-Type' => 'application/json',
                 ],
                 'body' => $data,
@@ -163,9 +145,6 @@ class Table
             'DELETE',
             $this->tableName,
             [
-                'headers' => [
-                    'Authorization' => 'Bearer ' . getenv('API_KEY'),
-                ],
                 'query' => ['records[]' => $id],
             ]
         );
