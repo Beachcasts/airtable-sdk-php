@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Beachcasts\Airtable;
+namespace Beachcasts\AirtableTests;
 
+use Beachcasts\Airtable\AirtableClient;
+use Beachcasts\Airtable\Table;
 use Dotenv\Dotenv;
 use GuzzleHttp\Client as GuzzleHttpClient;
 use GuzzleHttp\Psr7\Uri;
@@ -13,7 +15,7 @@ class AirtableClientTest extends TestCase
 {
     protected function setUp(): void
     {
-        Dotenv::create(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR)->load();
+        Dotenv::createImmutable(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR)->load();
     }
 
     public function testThatCreationSetsUpClient(): void

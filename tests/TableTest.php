@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Beachcasts\Airtable;
+namespace Beachcasts\AirtableTests;
 
 use Beachcasts\Airtable\AirtableClient as AirtableClient;
-use Beachcasts\Airtable\Table as Table;
+use Beachcasts\Airtable\Table;
 use Dotenv\Dotenv;
 use PHPUnit\Framework\TestCase;
 
@@ -20,7 +20,7 @@ class TableTest extends TestCase
 
     protected function setUp(): void
     {
-        Dotenv::create(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR)->load();
+        Dotenv::createImmutable(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR)->load();
 
         $this->table = new Table(getenv('TEST_TABLE_NAME'), getenv('TEST_VIEW_NAME'));
 
@@ -65,7 +65,7 @@ class TableTest extends TestCase
      * @depends testCreateRecord
      * @param array $result
      */
-    public function testUpdateRecord(array $result)
+    public function testUpdateRecord(array $result): void
     {
 //        $recordId = $result['records'][0]['id'];
 
