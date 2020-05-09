@@ -112,12 +112,14 @@ class Table
     }
 
     /**
-     * @param string $data
+     * @todo split out to a replace method for PUT
+     *
+     * @param array $data
      * @param string $type accepts PUT to replace or PATCH to update records
      * @return mixed
      * @throws \Exception
      */
-    public function update(string $data, $type = 'PATCH')
+    public function update(array $data, $type = 'PATCH')
     {
         if (!in_array(strtolower($type), ['put', 'patch'])) {
             throw new \Exception('Invalid method type.');
@@ -130,7 +132,7 @@ class Table
                 'headers' => [
                     'Content-Type' => 'application/json',
                 ],
-                'body' => $data,
+                'body' => json_encode($data),
             ]
         );
     }

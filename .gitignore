@@ -5,7 +5,6 @@ phpcs.xml
 .idea
 .vscode
 .env
-example.php
 build/coverage
 build/*
 !build/logs
