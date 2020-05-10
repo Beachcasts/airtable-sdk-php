@@ -25,7 +25,7 @@ class TableTest extends TestCase
         $this->config = Config::fromEnvironment();
         $this->table = new Table(getenv('TEST_TABLE_NAME'), getenv('TEST_VIEW_NAME'));
 
-        $airtableClient = new AirtableClient($this->config);
+        $airtableClient = new AirtableClient($this->config, getenv('TEST_BASE_ID'));
         $this->table->setClient($airtableClient->getClient());
 
         $this->data = [

@@ -12,15 +12,16 @@ use TypeError;
 class ConfigTest extends TestCase
 {
 
+    /**
+     * @var ReflectionProperty
+     */
     private $baseUrlProperty;
+
     /**
      * @var ReflectionProperty
      */
     private $versionProperty;
-    /**
-     * @var ReflectionProperty
-     */
-    private $baseIdProperty;
+
     /**
      * @var ReflectionProperty
      */
@@ -34,9 +35,6 @@ class ConfigTest extends TestCase
         $this->versionProperty = new ReflectionProperty(Config::class, 'version');
         $this->versionProperty->setAccessible(true);
 
-        $this->baseIdProperty = new ReflectionProperty(Config::class, 'baseId');
-        $this->baseIdProperty->setAccessible(true);
-
         $this->apiKeyProperty = new ReflectionProperty(Config::class, 'apiKey');
         $this->apiKeyProperty->setAccessible(true);
     }
@@ -49,7 +47,6 @@ class ConfigTest extends TestCase
         putenv('BASE_URL');
         putenv('VERSION');
         putenv('API_KEY');
-        putenv('BASE_ID');
         $this->expectException(TypeError::class);
         Config::fromEnvironment();
     }
@@ -63,7 +60,6 @@ class ConfigTest extends TestCase
         self::assertSame(getenv('BASE_URL'), $this->baseUrlProperty->getValue($config));
         self::assertSame(getenv('VERSION'), $this->versionProperty->getValue($config));
         self::assertSame(getenv('API_KEY'), $this->apiKeyProperty->getValue($config));
-        self::assertSame(getenv('BASE_ID'), $this->baseIdProperty->getValue($config));
     }
 
     public function invalidValuesForValidation(): array
@@ -85,15 +81,6 @@ class ConfigTest extends TestCase
                 'values' => ['baseUrl' => 'http://google.com', 'version' => 'v0', 'apiKey' => '', 'baseId' => '',],
                 'exceptionMessage' => 'apiKey was blank/empty'
             ],
-            'baseId empty string' => [
-                'values' => [
-                    'baseUrl' => 'http://google.com',
-                    'version' => 'v0',
-                    'apiKey' => 'fakekey',
-                    'baseId' => '',
-                ],
-                'exceptionMessage' => 'baseId was blank/empty'
-            ],
         ];
     }
 
@@ -107,7 +94,7 @@ class ConfigTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage($exceptionMessage);
 
-        Config::fromValues($values['baseUrl'], $values['version'], $values['apiKey'], $values['baseId']);
+        Config::fromValues($values['baseUrl'], $values['version'], $values['apiKey']);
     }
 
     public function testThatGettersReturnExpectedValues(): void
@@ -117,10 +104,6 @@ class ConfigTest extends TestCase
         $randomValue = sha1(random_bytes(10));
         $this->baseUrlProperty->setValue($config, $randomValue);
         $this->assertSame($randomValue, $config->getBaseUrl());
-
-        $randomValue = sha1(random_bytes(10));
-        $this->baseIdProperty->setValue($config, $randomValue);
-        $this->assertSame($randomValue, $config->getBaseId());
 
         $randomValue = sha1(random_bytes(10));
         $this->versionProperty->setValue($config, $randomValue);
