@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Beachcasts\Airtable;
 
+use Assert\Assert;
+
 class Config
 {
     /**
@@ -38,26 +40,35 @@ class Config
         $apiKey = getenv('API_KEY');
         $baseId = getenv('BASE_ID');
 
-        if (!self::validateValues($baseUrl, $version, $apiKey, $baseId)) {
-            throw new \InvalidArgumentException();
-        }
+        self::validateValues($baseUrl, $version, $apiKey, $baseId);
 
         return new self($baseUrl, $version, $apiKey, $baseId);
     }
 
     public static function fromValues(string $baseUrl, string $version, string $apiKey, string $baseId): Config
     {
-        if (!self::validateValues($baseUrl, $version, $apiKey, $baseId)) {
-            throw new \InvalidArgumentException();
-        }
+        self::validateValues($baseUrl, $version, $apiKey, $baseId);
 
         return new self($baseUrl, $version, $apiKey, $baseId);
     }
 
     protected static function validateValues(string $baseUrl, string $version, string $apiKey, string $baseId): bool
     {
+        Assert::that($baseUrl)
+            ->notBlank('baseUrl was blank/empty')
+            ->url('baseUrl was not a valid url');
+
+        Assert::that($version)
+            ->regex('/v\d+/', 'Version did not match expected pattern');
+
+        Assert::that($apiKey)
+            ->notBlank('apiKey was blank/empty');
+
+        Assert::that($baseId)
+            ->notBlank('baseId was blank/empty');
+
         // validate
-        return true; // false
+        return true;
     }
 
     public function getBaseUrl(): string
