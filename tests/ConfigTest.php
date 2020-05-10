@@ -41,8 +41,15 @@ class ConfigTest extends TestCase
         $this->apiKeyProperty->setAccessible(true);
     }
 
+    /**
+     * @runInSeparateProcess
+     */
     public function testThatFromEnvironmentFailsWhenNoEnvironSet(): void
     {
+        putenv('BASE_URL');
+        putenv('VERSION');
+        putenv('API_KEY');
+        putenv('BASE_ID');
         $this->expectException(TypeError::class);
         Config::fromEnvironment();
     }

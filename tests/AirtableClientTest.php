@@ -30,7 +30,7 @@ class AirtableClientTest extends TestCase
         Dotenv::createImmutable(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR)->load();
 
         $this->config = Config::fromValues(
-            'baseUrl',
+            'https://google.com',
             'v0',
             sha1(random_bytes(10)),
             sha1(random_bytes(10))
