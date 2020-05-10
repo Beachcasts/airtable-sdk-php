@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Beachcasts\AirtableTests;
 
 use Beachcasts\Airtable\AirtableClient;
+use Beachcasts\Airtable\Config;
 use Beachcasts\Airtable\Middleware\BearerTokenMiddleware;
 use Beachcasts\Airtable\Table;
 use Dotenv\Dotenv;
@@ -20,21 +21,21 @@ class AirtableClientTest extends TestCase
      */
     private $client;
     /**
-     * @var string
+     * @var Config
      */
-    private $baseId;
-    /**
-     * @var string
-     */
-    private $apiKey;
+    private $config;
 
     protected function setUp(): void
     {
         Dotenv::createImmutable(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR)->load();
 
-        $this->baseId = sha1(random_bytes(10));
-        $this->apiKey = sha1(random_bytes(10));
-        $this->client = new AirtableClient($this->apiKey, $this->baseId);
+        $this->config = Config::fromValues(
+            'baseUrl',
+            'v0',
+            sha1(random_bytes(10)),
+            sha1(random_bytes(10))
+        );
+        $this->client = new AirtableClient($this->config);
     }
 
     public function testThatCreationSetsUpClient(): void
@@ -46,7 +47,7 @@ class AirtableClientTest extends TestCase
         self::assertSame($property->getValue($this->client), $this->client->getClient());
         /** @var Uri $uri */
         $uri = $this->client->getClient()->getConfig('base_uri');
-        self::assertStringContainsString($this->baseId, $uri->getPath());
+        self::assertStringContainsString($this->config->getBaseId(), $uri->getPath());
     }
 
     public function testThatBearerTokenMiddlewareIsRegistered(): void
