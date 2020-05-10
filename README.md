@@ -37,8 +37,9 @@ use Beachcasts\Airtable\Config;
 use Beachcasts\Airtable\Table;
 
 Dotenv\Dotenv::createImmutable(__DIR__)->load();
+$baseId = getenv('BASE_ID');
 
-$airtableClient = new AirtableClient(Config::fromEnvironment());
+$airtableClient = new AirtableClient(Config::fromEnvironment(), $baseId);
 
 $table = $airtableClient->getTable('Content production');
 $content = $table->list(['fields' = ['column_1_name']]);
