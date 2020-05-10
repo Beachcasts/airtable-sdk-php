@@ -17,35 +17,31 @@ use GuzzleHttp\Middleware;
 class AirtableClient
 {
     /**
-     * Base identifier
-     *
-     * @var null|string $baseId
-     */
-    protected $baseId;
-
-    /**
      * Guzzle client object
      *
      * @var Client|null
      */
     protected $client;
+    /**
+     * @var Config
+     */
+    private $config;
 
     /**
      * Airtable constructor. Create a new Airtable Instance
      *
-     * @param string $apiKey
-     * @param string $baseId
+     * @param Config $config
      */
-    public function __construct(string $apiKey, string $baseId)
+    public function __construct(Config $config)
     {
         $this->client = new Client(
             [
-                'base_uri' => getenv('BASE_URL') . '/' . getenv('VERSION') . '/' . $baseId . '/',
-                'handler' => $this->getBearerTokenStack($apiKey)
+                'base_uri' => $config->getBaseUrl() . '/' . $config->getVersion() . '/' . $config->getBaseId() . '/',
+                'handler' => $this->getBearerTokenStack($config->getApiKey())
             ]
         );
 
-        $this->baseId = $baseId;
+        $this->config = $config;
     }
 
     private function getBearerTokenStack(string $apiKey): HandlerStack
