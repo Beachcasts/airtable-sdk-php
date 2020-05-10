@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Beachcasts\Airtable;
 
+use Assert\Assert;
 use Beachcasts\Airtable\Middleware\BearerTokenMiddleware;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\CurlHandler;
@@ -22,26 +23,24 @@ class AirtableClient
      * @var Client|null
      */
     protected $client;
-    /**
-     * @var Config
-     */
-    private $config;
 
     /**
      * Airtable constructor. Create a new Airtable Instance
      *
      * @param Config $config
+     * @param string $baseId
      */
-    public function __construct(Config $config)
+    public function __construct(Config $config, string $baseId)
     {
+        Assert::that($baseId)
+            ->notBlank('AirTable requires a non-empty $baseId');
+        
         $this->client = new Client(
             [
-                'base_uri' => $config->getBaseUrl() . '/' . $config->getVersion() . '/' . $config->getBaseId() . '/',
+                'base_uri' => $config->getBaseUrl() . '/' . $config->getVersion() . '/' . $baseId . '/',
                 'handler' => $this->getBearerTokenStack($config->getApiKey())
             ]
         );
-
-        $this->config = $config;
     }
 
     private function getBearerTokenStack(string $apiKey): HandlerStack

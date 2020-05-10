@@ -12,24 +12,21 @@ class Config
      * @var string
      */
     private $baseUrl;
+
     /**
      * @var string
      */
     private $version;
-    /**
-     * @var string
-     */
-    private $baseId;
+
     /**
      * @var string
      */
     private $apiKey;
 
-    protected function __construct(string $baseUrl, string $version, string $apiKey, string $baseId)
+    protected function __construct(string $baseUrl, string $version, string $apiKey)
     {
         $this->baseUrl = $baseUrl;
         $this->version = $version;
-        $this->baseId = $baseId;
         $this->apiKey = $apiKey;
     }
 
@@ -38,21 +35,20 @@ class Config
         $baseUrl = getenv('BASE_URL');
         $version = getenv('VERSION');
         $apiKey = getenv('API_KEY');
-        $baseId = getenv('BASE_ID');
 
-        self::validateValues($baseUrl, $version, $apiKey, $baseId);
+        self::validateValues($baseUrl, $version, $apiKey);
 
-        return new self($baseUrl, $version, $apiKey, $baseId);
+        return new self($baseUrl, $version, $apiKey);
     }
 
-    public static function fromValues(string $baseUrl, string $version, string $apiKey, string $baseId): Config
+    public static function fromValues(string $baseUrl, string $version, string $apiKey): Config
     {
-        self::validateValues($baseUrl, $version, $apiKey, $baseId);
+        self::validateValues($baseUrl, $version, $apiKey);
 
-        return new self($baseUrl, $version, $apiKey, $baseId);
+        return new self($baseUrl, $version, $apiKey);
     }
 
-    protected static function validateValues(string $baseUrl, string $version, string $apiKey, string $baseId): bool
+    protected static function validateValues(string $baseUrl, string $version, string $apiKey): bool
     {
         Assert::that($baseUrl)
             ->notBlank('baseUrl was blank/empty')
@@ -64,10 +60,6 @@ class Config
         Assert::that($apiKey)
             ->notBlank('apiKey was blank/empty');
 
-        Assert::that($baseId)
-            ->notBlank('baseId was blank/empty');
-
-        // validate
         return true;
     }
 
@@ -79,11 +71,6 @@ class Config
     public function getVersion(): string
     {
         return $this->version;
-    }
-
-    public function getBaseId(): string
-    {
-        return $this->baseId;
     }
 
     public function getApiKey(): string
