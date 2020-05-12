@@ -51,15 +51,33 @@ class ConfigTest extends TestCase
         Config::fromEnvironment();
     }
 
+    /**
+     * @runInSeparateProcess
+     */
     public function testThatFromEnvironmentSetsInternalWhenEnvironSet(): void
     {
-        Dotenv::createImmutable(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR)->load();
+        $baseUrl = 'https://' . sha1(random_bytes('10')) . '.com';
+        $version = 'v' . random_int(11, 99);
+        $apiKey = sha1(random_bytes(10));
+
+        //put our values into ENV
+        putenv('BASE_URL=' . $baseUrl);
+        putenv('VERSION=' . $version);
+        putenv('API_KEY=' . $apiKey);
 
         $config = Config::fromEnvironment();
 
-        self::assertSame(getenv('BASE_URL'), $this->baseUrlProperty->getValue($config));
-        self::assertSame(getenv('VERSION'), $this->versionProperty->getValue($config));
-        self::assertSame(getenv('API_KEY'), $this->apiKeyProperty->getValue($config));
+        //clean up
+        putenv('BASE_URL');
+        putenv('VERSION');
+        putenv('API_KEY');
+
+        self::assertSame($baseUrl, $this->baseUrlProperty->getValue($config));
+        self::assertSame($baseUrl, $config->getBaseUrl());
+        self::assertSame($version, $this->versionProperty->getValue($config));
+        self::assertSame($version, $config->getVersion());
+        self::assertSame($apiKey, $this->apiKeyProperty->getValue($config));
+        self::assertSame($apiKey, $config->getApiKey());
     }
 
     public function invalidValuesForValidation(): array
