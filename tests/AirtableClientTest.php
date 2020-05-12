@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Beachcasts\AirtableTests;
 
+use Assert\InvalidArgumentException;
 use Beachcasts\Airtable\AirtableClient;
+use Beachcasts\Airtable\Config;
 use Beachcasts\Airtable\Middleware\BearerTokenMiddleware;
 use Beachcasts\Airtable\Table;
 use Dotenv\Dotenv;
 use GuzzleHttp\Client as GuzzleHttpClient;
 use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Psr7\Uri;
 use PHPUnit\Framework\TestCase;
 
 class AirtableClientTest extends TestCase
@@ -18,35 +19,56 @@ class AirtableClientTest extends TestCase
     /**
      * @var AirtableClient
      */
-    private $client;
+    private $airtableClient;
+
+    /**
+     * @var Config
+     */
+    private $config;
+
     /**
      * @var string
      */
     private $baseId;
-    /**
-     * @var string
-     */
-    private $apiKey;
 
     protected function setUp(): void
     {
         Dotenv::createImmutable(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR)->load();
 
+        $this->config = Config::fromValues(
+            'https://google.com',
+            'v0',
+            sha1(random_bytes(10))
+        );
         $this->baseId = sha1(random_bytes(10));
-        $this->apiKey = sha1(random_bytes(10));
-        $this->client = new AirtableClient($this->apiKey, $this->baseId);
+
+        $this->airtableClient = new AirtableClient($this->config, $this->baseId);
+    }
+
+    public function testThatPassingEmptyBaseIdTriggersException(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('AirTable requires a non-empty $baseId');
+        new AirtableClient($this->config, '');
     }
 
     public function testThatCreationSetsUpClient(): void
     {
         $property = new \ReflectionProperty(AirtableClient::class, 'client');
         $property->setAccessible(true);
+        $guzzleClient = $this->airtableClient->getClient();
 
-        self::assertInstanceOf(GuzzleHttpClient::class, $property->getValue($this->client));
-        self::assertSame($property->getValue($this->client), $this->client->getClient());
-        /** @var Uri $uri */
-        $uri = $this->client->getClient()->getConfig('base_uri');
-        self::assertStringContainsString($this->baseId, $uri->getPath());
+        self::assertInstanceOf(GuzzleHttpClient::class, $property->getValue($this->airtableClient));
+        self::assertSame($property->getValue($this->airtableClient), $guzzleClient);
+        self::assertSame(
+            sprintf(
+                '%s/%s/%s/',
+                $this->config->getBaseUrl(),
+                $this->config->getVersion(),
+                $this->baseId
+            ),
+            $guzzleClient->getConfig('base_uri')->__toString()
+        );
     }
 
     public function testThatBearerTokenMiddlewareIsRegistered(): void
@@ -54,7 +76,7 @@ class AirtableClientTest extends TestCase
         $stackProperty = new \ReflectionProperty(HandlerStack::class, 'stack');
         $stackProperty->setAccessible(true);
 
-        $stackValue = $stackProperty->getValue($this->client->getClient()->getConfig('handler'));
+        $stackValue = $stackProperty->getValue($this->airtableClient->getClient()->getConfig('handler'));
         $names = array_column($stackValue, 1);
         self::assertContains(BearerTokenMiddleware::class, $names);
     }
@@ -63,7 +85,7 @@ class AirtableClientTest extends TestCase
     {
         $tableName = sha1(random_bytes(10));
         $viewMode = sha1(random_bytes(10));
-        $result = $this->client->getTable($tableName, $viewMode);
+        $result = $this->airtableClient->getTable($tableName, $viewMode);
 
         $tableNameProperty = new \ReflectionProperty(Table::class, 'tableName');
         $tableNameProperty->setAccessible(true);

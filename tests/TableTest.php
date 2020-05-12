@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Beachcasts\AirtableTests;
 
 use Beachcasts\Airtable\AirtableClient as AirtableClient;
+use Beachcasts\Airtable\Config;
 use Beachcasts\Airtable\Table;
 use Dotenv\Dotenv;
 use PHPUnit\Framework\TestCase;
@@ -21,10 +22,10 @@ class TableTest extends TestCase
     protected function setUp(): void
     {
         Dotenv::createImmutable(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR)->load();
-
+        $this->config = Config::fromEnvironment();
         $this->table = new Table(getenv('TEST_TABLE_NAME'), getenv('TEST_VIEW_NAME'));
 
-        $airtableClient = new AirtableClient(getenv('API_KEY'), getenv('TEST_BASE_ID'));
+        $airtableClient = new AirtableClient($this->config, getenv('TEST_BASE_ID'));
         $this->table->setClient($airtableClient->getClient());
 
         $this->data = [

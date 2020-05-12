@@ -32,17 +32,17 @@ Below is what a sample usage might look like, in the SDK current unfinished stat
 ``` php
 require_once('vendor/autoload.php');
 
-use Beachcasts\Airtable\Table;
 use Beachcasts\Airtable\AirtableClient;
+use Beachcasts\Airtable\Config;
+use Beachcasts\Airtable\Table;
 
-Dotenv\Dotenv::create(__DIR__)->load();
+Dotenv\Dotenv::createImmutable(__DIR__)->load();
+$baseId = getenv('BASE_ID');
 
-$baseId = '<base_id>';
+$airtableClient = new AirtableClient(Config::fromEnvironment(), $baseId);
 
-$airtableClient = new AirtableClient($baseId);
-
-$table = new Table('Content production');
-$content = $table->list($airtableClient->getClient(), 'Content pipeline');
+$table = $airtableClient->getTable('Content production');
+$content = $table->list(['fields' = ['column_1_name']]);
 
 echo $content->getBody()->getContents();
 ```
@@ -56,7 +56,7 @@ Running the test suite requires the manual creation of a `Base` at Airtable. Log
 
 Next, you will need the `base_id` in order to run the tests, as well as the `api_key`. By going to the [Airtable API docs](https://airtable.com/api) you can now click into the new test base and view the `base_id`. Likewise, you can check the box in the upper right to display the api key.
 
-Add the key and id to the `phpunit.xml`, which can be created from the `phpunit.xml.dist` file.
+Add the key and id to the `.env`, which can be created by copying the `.env.default` to `.env`, and updating as needed..
 
 Following that, tests can be run with the following command:
 
