@@ -64,13 +64,13 @@ class TableTest extends TestCase
 
     /**
      * @depends testCreateRecord
-     * @param array $result
+     * @param array $record
      */
-    public function testUpdateRecord(array $result): void
+    public function testUpdateRecord(array $record): void
     {
         $newName = 'New Name Test';
 
-        $this->data['records'][0]['id'] = $result['records'][0]['id'];
+        $this->data['records'][0]['id'] = $record['records'][0]['id'];
         $this->data['records'][0]['fields']['Name'] = $newName;
 
         $response = $this->table->update($this->data);
@@ -82,7 +82,6 @@ class TableTest extends TestCase
             $response->getStatusCode(),
             'API did not return HTTP 200'
         );
-
 
         $this->assertEquals(
             $newName,
