@@ -68,8 +68,26 @@ class TableTest extends TestCase
      */
     public function testUpdateRecord(array $result): void
     {
-//        $recordId = $result['records'][0]['id'];
+        $newName = 'New Name Test';
 
-        $this->assertTrue(true);
+        $this->data['records'][0]['id'] = $result['records'][0]['id'];
+        $this->data['records'][0]['fields']['Name'] = $newName;
+
+        $response = $this->table->update($this->data);
+
+        $result = json_decode((string)$response->getBody(), true);
+
+        $this->assertEquals(
+            '200',
+            $response->getStatusCode(),
+            'API did not return HTTP 200'
+        );
+
+
+        $this->assertEquals(
+            $newName,
+            $result['records'][0]['fields']['Name'],
+            'Record did not contain the correct Name.'
+        );
     }
 }

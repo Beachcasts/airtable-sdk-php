@@ -89,7 +89,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-downloads]: https://img.shields.io/packagist/dt/beachcasts/airtable-sdk-php.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/beachcasts/airtable-sdk-php
-[link-travis]: https://travis-ci.org/beachcasts/airtable-sdk-php
+[link-travis]: https://travis-ci.com/beachcasts/airtable-sdk-php
 [link-scrutinizer]: https://scrutinizer-ci.com/g/beachcasts/airtable-sdk-php/code-structure
 [link-code-quality]: https://scrutinizer-ci.com/g/beachcasts/airtable-sdk-php
 [link-downloads]: https://packagist.org/packages/beachcasts/airtable-sdk-php
