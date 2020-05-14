@@ -66,6 +66,20 @@ class TableTest extends TestCase
      * @depends testCreateRecord
      * @param array $record
      */
+    public function testUpdateWrongTypePassed(array $record): array
+    {
+        $this->data = $record;
+        unset($this->data['records'][0]['createdTime']);
+
+        $this->expectException(\Exception::class);
+
+        $response = $this->table->update($this->data, 'GET');
+    }
+
+    /**
+     * @depends testCreateRecord
+     * @param array $record
+     */
     public function testUpdateRecord(array $record): array
     {
         $newName = 'New Name Test';
