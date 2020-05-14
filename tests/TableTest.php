@@ -66,14 +66,14 @@ class TableTest extends TestCase
      * @depends testCreateRecord
      * @param array $record
      */
-    public function testUpdateWrongTypePassed(array $record): array
+    public function testUpdateWrongTypePassed(array $record): void
     {
         $this->data = $record;
         unset($this->data['records'][0]['createdTime']);
 
         $this->expectException(\Exception::class);
 
-        $response = $this->table->update($this->data, 'GET');
+        $this->table->update($this->data, 'GET');
     }
 
     /**
