@@ -66,6 +66,24 @@ class TableTest extends TestCase
      * @depends testCreateRecord
      * @param array $record
      */
+    public function testListRecords(array $record): void
+    {
+        $params = [
+            'maxRecords' => 3
+        ];
+
+        $response = $this->table->list($params);
+        $result = json_decode((string)$response->getBody(), true);
+
+        $this->assertArrayHasKey('records', $result);
+
+        $this->assertContains($record['records'][0], $result['records']);
+    }
+
+    /**
+     * @depends testCreateRecord
+     * @param array $record
+     */
     public function testReadRecord(array $record): void
     {
         $response = $this->table->read($record['records'][0]['id']);
