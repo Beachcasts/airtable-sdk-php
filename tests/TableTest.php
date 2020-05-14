@@ -66,7 +66,7 @@ class TableTest extends TestCase
      * @depends testCreateRecord
      * @param array $record
      */
-    public function testUpdateRecord(array $record): void
+    public function testUpdateRecord(array $record): array
     {
         $newName = 'New Name Test';
 
@@ -88,5 +88,57 @@ class TableTest extends TestCase
             $result['records'][0]['fields']['Name'],
             'Record did not contain the correct Name.'
         );
+
+        return $result;
+    }
+
+    /**
+     * @depends testUpdateRecord
+     * @param array $record
+     */
+    public function testReplaceRecord(array $record): array
+    {
+        $newName = 'Another New Name Test';
+
+        $this->data = $record;
+        $this->data['records'][0]['fields']['Name'] = $newName;
+        unset($this->data['records'][0]['createdTime']);
+
+        $response = $this->table->update($this->data, "PUT");
+
+        $result = json_decode((string)$response->getBody(), true);
+
+        $this->assertEquals(
+            '200',
+            $response->getStatusCode(),
+            'API did not return HTTP 200'
+        );
+
+        $this->assertEquals(
+            $newName,
+            $result['records'][0]['fields']['Name'],
+            'Record did not contain the correct Name.'
+        );
+
+        return $result;
+    }
+
+    /**
+     * @depends testReplaceRecord
+     * @param array $record
+     */
+    public function testDeleteRecord(array $record): void
+    {
+        $response = $this->table->delete($record['records'][0]['id']);
+
+        $result = json_decode((string)$response->getBody(), true);
+
+        $this->assertEquals(
+            '200',
+            $response->getStatusCode(),
+            'API did not return HTTP 200'
+        );
+
+        $this->assertTrue($result['records'][0]['deleted']);
     }
 }
