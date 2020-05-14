@@ -34,14 +34,14 @@ require_once('vendor/autoload.php');
 
 use Beachcasts\Airtable\AirtableClient;
 use Beachcasts\Airtable\Config;
-use Beachcasts\Airtable\Table;
 
 Dotenv\Dotenv::createImmutable(__DIR__)->load();
 $baseId = getenv('BASE_ID');
 
 $airtableClient = new AirtableClient(Config::fromEnvironment(), $baseId);
 
-$table = $airtableClient->getTable('Content production');
+// getTable($tableName, $viewName);
+$table = $airtableClient->getTable('Content production', 'Content pipeline');
 $content = $table->list(['fields' = ['column_1_name']]);
 
 echo $content->getBody()->getContents();

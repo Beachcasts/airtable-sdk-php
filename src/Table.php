@@ -78,11 +78,6 @@ class Table
      */
     public function list(array $params): ResponseInterface
     {
-        $params = [
-            'maxRecords' => 3,
-            'view' => $this->viewName
-        ];
-
 //        if (!empty($params))
         $queryString = http_build_query($params);
 
