@@ -66,6 +66,19 @@ class TableTest extends TestCase
      * @depends testCreateRecord
      * @param array $record
      */
+    public function testReadRecord(array $record): void
+    {
+        $response = $this->table->read($record['records'][0]['id']);
+
+        $result = json_decode((string)$response->getBody(), true);
+
+        $this->assertSame($result, $record['records'][0]);
+    }
+
+    /**
+     * @depends testCreateRecord
+     * @param array $record
+     */
     public function testUpdateWrongTypePassed(array $record): void
     {
         $this->data = $record;
