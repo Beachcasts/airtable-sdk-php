@@ -1,171 +1,170 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1589498883">
-  <project timestamp="1589498883">
+<coverage generated="1589502619">
+  <project timestamp="1589502619">
     <package name="Beachcasts\Airtable">
-      <file name="/opt/project/src/AirtableClient.php">
+      <file name="/media/kat/HTDOCS/airtable-sdk-php/src/AirtableClient.php">
         <class name="Beachcasts\Airtable\AirtableClient" namespace="Beachcasts\Airtable" fullPackage="Beachcasts" package="Beachcasts">
           <metrics complexity="4" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="17" coveredelements="17"/>
         </class>
-        <line num="33" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="11"/>
-        <line num="35" type="stmt" count="11"/>
-        <line num="36" type="stmt" count="11"/>
-        <line num="38" type="stmt" count="11"/>
-        <line num="40" type="stmt" count="11"/>
-        <line num="41" type="stmt" count="11"/>
-        <line num="44" type="stmt" count="11"/>
-        <line num="46" type="method" name="getBearerTokenStack" visibility="private" complexity="1" crap="1" count="11"/>
-        <line num="48" type="stmt" count="11"/>
-        <line num="49" type="stmt" count="11"/>
-        <line num="51" type="stmt" count="11"/>
-        <line num="57" type="method" name="getClient" visibility="public" complexity="1" crap="1" count="9"/>
-        <line num="59" type="stmt" count="9"/>
+        <line num="33" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="12"/>
+        <line num="35" type="stmt" count="12"/>
+        <line num="36" type="stmt" count="12"/>
+        <line num="38" type="stmt" count="12"/>
+        <line num="40" type="stmt" count="12"/>
+        <line num="41" type="stmt" count="12"/>
+        <line num="44" type="stmt" count="12"/>
+        <line num="46" type="method" name="getBearerTokenStack" visibility="private" complexity="1" crap="1" count="12"/>
+        <line num="48" type="stmt" count="12"/>
+        <line num="49" type="stmt" count="12"/>
+        <line num="51" type="stmt" count="12"/>
+        <line num="57" type="method" name="getClient" visibility="public" complexity="1" crap="1" count="10"/>
+        <line num="59" type="stmt" count="10"/>
         <line num="62" type="method" name="getTable" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="64" type="stmt" count="1"/>
         <line num="65" type="stmt" count="1"/>
         <line num="67" type="stmt" count="1"/>
         <metrics loc="69" ncloc="51" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="17" coveredelements="17"/>
       </file>
-      <file name="/opt/project/src/Config.php">
+      <file name="/media/kat/HTDOCS/airtable-sdk-php/src/Config.php">
         <class name="Beachcasts\Airtable\Config" namespace="Beachcasts\Airtable">
           <metrics complexity="7" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="22" elements="29" coveredelements="29"/>
         </class>
-        <line num="26" type="method" name="__construct" visibility="protected" complexity="1" crap="1" count="13"/>
-        <line num="28" type="stmt" count="13"/>
-        <line num="29" type="stmt" count="13"/>
-        <line num="30" type="stmt" count="13"/>
-        <line num="31" type="stmt" count="13"/>
-        <line num="33" type="method" name="fromEnvironment" visibility="public" complexity="1" crap="1" count="10"/>
-        <line num="35" type="stmt" count="10"/>
-        <line num="36" type="stmt" count="10"/>
-        <line num="37" type="stmt" count="10"/>
-        <line num="39" type="stmt" count="10"/>
-        <line num="41" type="stmt" count="9"/>
+        <line num="26" type="method" name="__construct" visibility="protected" complexity="1" crap="1" count="14"/>
+        <line num="28" type="stmt" count="14"/>
+        <line num="29" type="stmt" count="14"/>
+        <line num="30" type="stmt" count="14"/>
+        <line num="31" type="stmt" count="14"/>
+        <line num="33" type="method" name="fromEnvironment" visibility="public" complexity="1" crap="1" count="11"/>
+        <line num="35" type="stmt" count="11"/>
+        <line num="36" type="stmt" count="11"/>
+        <line num="37" type="stmt" count="11"/>
+        <line num="39" type="stmt" count="11"/>
+        <line num="41" type="stmt" count="10"/>
         <line num="44" type="method" name="fromValues" visibility="public" complexity="1" crap="1" count="8"/>
         <line num="46" type="stmt" count="8"/>
         <line num="48" type="stmt" count="4"/>
-        <line num="51" type="method" name="validateValues" visibility="protected" complexity="1" crap="1" count="17"/>
-        <line num="53" type="stmt" count="17"/>
-        <line num="54" type="stmt" count="17"/>
-        <line num="55" type="stmt" count="16"/>
-        <line num="57" type="stmt" count="15"/>
-        <line num="58" type="stmt" count="15"/>
-        <line num="60" type="stmt" count="14"/>
-        <line num="61" type="stmt" count="14"/>
-        <line num="63" type="stmt" count="13"/>
-        <line num="66" type="method" name="getBaseUrl" visibility="public" complexity="1" crap="1" count="13"/>
-        <line num="68" type="stmt" count="13"/>
-        <line num="71" type="method" name="getVersion" visibility="public" complexity="1" crap="1" count="13"/>
-        <line num="73" type="stmt" count="13"/>
-        <line num="76" type="method" name="getApiKey" visibility="public" complexity="1" crap="1" count="13"/>
-        <line num="78" type="stmt" count="13"/>
+        <line num="51" type="method" name="validateValues" visibility="protected" complexity="1" crap="1" count="18"/>
+        <line num="53" type="stmt" count="18"/>
+        <line num="54" type="stmt" count="18"/>
+        <line num="55" type="stmt" count="17"/>
+        <line num="57" type="stmt" count="16"/>
+        <line num="58" type="stmt" count="16"/>
+        <line num="60" type="stmt" count="15"/>
+        <line num="61" type="stmt" count="15"/>
+        <line num="63" type="stmt" count="14"/>
+        <line num="66" type="method" name="getBaseUrl" visibility="public" complexity="1" crap="1" count="14"/>
+        <line num="68" type="stmt" count="14"/>
+        <line num="71" type="method" name="getVersion" visibility="public" complexity="1" crap="1" count="14"/>
+        <line num="73" type="stmt" count="14"/>
+        <line num="76" type="method" name="getApiKey" visibility="public" complexity="1" crap="1" count="14"/>
+        <line num="78" type="stmt" count="14"/>
         <metrics loc="80" ncloc="71" classes="1" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="22" elements="29" coveredelements="29"/>
       </file>
-      <file name="/opt/project/src/Table.php">
+      <file name="/media/kat/HTDOCS/airtable-sdk-php/src/Table.php">
         <class name="Beachcasts\Airtable\Table" namespace="Beachcasts\Airtable" fullPackage="Beachcasts" package="Beachcasts">
-          <metrics complexity="10" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="23" coveredstatements="23" elements="31" coveredelements="31"/>
+          <metrics complexity="10" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="22" elements="30" coveredelements="30"/>
         </class>
-        <line num="44" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="8"/>
-        <line num="46" type="stmt" count="8"/>
-        <line num="47" type="stmt" count="8"/>
-        <line num="48" type="stmt" count="8"/>
-        <line num="53" type="method" name="setClient" visibility="public" complexity="1" crap="1" count="8"/>
-        <line num="55" type="stmt" count="8"/>
-        <line num="56" type="stmt" count="8"/>
-        <line num="61" type="method" name="getName" visibility="public" complexity="2" crap="2" count="2"/>
-        <line num="63" type="stmt" count="2"/>
-        <line num="79" type="method" name="list" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="87" type="stmt" count="1"/>
+        <line num="38" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="9"/>
+        <line num="40" type="stmt" count="9"/>
+        <line num="41" type="stmt" count="9"/>
+        <line num="46" type="method" name="setClient" visibility="public" complexity="1" crap="1" count="9"/>
+        <line num="48" type="stmt" count="9"/>
+        <line num="49" type="stmt" count="9"/>
+        <line num="54" type="method" name="getName" visibility="public" complexity="2" crap="2" count="3"/>
+        <line num="56" type="stmt" count="3"/>
+        <line num="72" type="method" name="list" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="75" type="stmt" count="1"/>
+        <line num="77" type="stmt" count="1"/>
+        <line num="79" type="stmt" count="1"/>
+        <line num="86" type="method" name="create" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="88" type="stmt" count="1"/>
         <line num="89" type="stmt" count="1"/>
-        <line num="91" type="stmt" count="1"/>
-        <line num="98" type="method" name="create" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="100" type="stmt" count="1"/>
-        <line num="101" type="stmt" count="1"/>
-        <line num="109" type="method" name="read" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="111" type="stmt" count="1"/>
-        <line num="122" type="method" name="update" visibility="public" complexity="2" crap="2" count="3"/>
-        <line num="124" type="stmt" count="3"/>
-        <line num="125" type="stmt" count="1"/>
-        <line num="128" type="stmt" count="2"/>
-        <line num="129" type="stmt" count="2"/>
-        <line num="130" type="stmt" count="2"/>
-        <line num="133" type="stmt" count="2"/>
-        <line num="135" type="stmt" count="2"/>
-        <line num="144" type="method" name="delete" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="146" type="stmt" count="1"/>
-        <line num="147" type="stmt" count="1"/>
-        <line num="148" type="stmt" count="1"/>
-        <line num="150" type="stmt" count="1"/>
-        <metrics loc="154" ncloc="80" classes="1" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="23" coveredstatements="23" elements="31" coveredelements="31"/>
+        <line num="97" type="method" name="read" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="99" type="stmt" count="1"/>
+        <line num="110" type="method" name="update" visibility="public" complexity="2" crap="2" count="3"/>
+        <line num="112" type="stmt" count="3"/>
+        <line num="113" type="stmt" count="1"/>
+        <line num="116" type="stmt" count="2"/>
+        <line num="117" type="stmt" count="2"/>
+        <line num="118" type="stmt" count="2"/>
+        <line num="121" type="stmt" count="2"/>
+        <line num="123" type="stmt" count="2"/>
+        <line num="132" type="method" name="delete" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="134" type="stmt" count="1"/>
+        <line num="135" type="stmt" count="1"/>
+        <line num="136" type="stmt" count="1"/>
+        <line num="138" type="stmt" count="1"/>
+        <metrics loc="142" ncloc="80" classes="1" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="22" elements="30" coveredelements="30"/>
       </file>
     </package>
     <package name="Beachcasts\Airtable\Exception">
-      <file name="/opt/project/src/Exception/AirtableException.php">
+      <file name="/media/kat/HTDOCS/airtable-sdk-php/src/Exception/AirtableException.php">
         <class name="Beachcasts\Airtable\Exception\AirtableException" namespace="Beachcasts\Airtable\Exception">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="15" ncloc="9" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
-      <file name="/opt/project/src/Exception/BadGatewayException.php">
+      <file name="/media/kat/HTDOCS/airtable-sdk-php/src/Exception/BadGatewayException.php">
         <class name="Beachcasts\Airtable\Exception\BadGatewayException" namespace="Beachcasts\Airtable\Exception">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="22" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
-      <file name="/opt/project/src/Exception/BadRequestException.php">
+      <file name="/media/kat/HTDOCS/airtable-sdk-php/src/Exception/BadRequestException.php">
         <class name="Beachcasts\Airtable\Exception\BadRequestException" namespace="Beachcasts\Airtable\Exception">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="22" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
-      <file name="/opt/project/src/Exception/ForbiddenException.php">
+      <file name="/media/kat/HTDOCS/airtable-sdk-php/src/Exception/ForbiddenException.php">
         <class name="Beachcasts\Airtable\Exception\ForbiddenException" namespace="Beachcasts\Airtable\Exception">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="22" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
-      <file name="/opt/project/src/Exception/InternalServerErrorException.php">
+      <file name="/media/kat/HTDOCS/airtable-sdk-php/src/Exception/InternalServerErrorException.php">
         <class name="Beachcasts\Airtable\Exception\InternalServerErrorException" namespace="Beachcasts\Airtable\Exception">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="22" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
-      <file name="/opt/project/src/Exception/InvalidRequestException.php">
+      <file name="/media/kat/HTDOCS/airtable-sdk-php/src/Exception/InvalidRequestException.php">
         <class name="Beachcasts\Airtable\Exception\InvalidRequestException" namespace="Beachcasts\Airtable\Exception">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="22" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
-      <file name="/opt/project/src/Exception/MissingApiKeyException.php">
+      <file name="/media/kat/HTDOCS/airtable-sdk-php/src/Exception/MissingApiKeyException.php">
         <class name="Beachcasts\Airtable\Exception\MissingApiKeyException" namespace="Beachcasts\Airtable\Exception">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="18" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
-      <file name="/opt/project/src/Exception/NotFoundException.php">
+      <file name="/media/kat/HTDOCS/airtable-sdk-php/src/Exception/NotFoundException.php">
         <class name="Beachcasts\Airtable\Exception\NotFoundException" namespace="Beachcasts\Airtable\Exception">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="22" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
-      <file name="/opt/project/src/Exception/PaymentRequiredException.php">
+      <file name="/media/kat/HTDOCS/airtable-sdk-php/src/Exception/PaymentRequiredException.php">
         <class name="Beachcasts\Airtable\Exception\PaymentRequiredException" namespace="Beachcasts\Airtable\Exception">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="22" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
-      <file name="/opt/project/src/Exception/RequestEntityTooLargeException.php">
+      <file name="/media/kat/HTDOCS/airtable-sdk-php/src/Exception/RequestEntityTooLargeException.php">
         <class name="Beachcasts\Airtable\Exception\RequestEntityTooLargeException" namespace="Beachcasts\Airtable\Exception">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="22" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
-      <file name="/opt/project/src/Exception/ServiceUnavailableException.php">
+      <file name="/media/kat/HTDOCS/airtable-sdk-php/src/Exception/ServiceUnavailableException.php">
         <class name="Beachcasts\Airtable\Exception\ServiceUnavailableException" namespace="Beachcasts\Airtable\Exception">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="22" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
-      <file name="/opt/project/src/Exception/UnauthorizedException.php">
+      <file name="/media/kat/HTDOCS/airtable-sdk-php/src/Exception/UnauthorizedException.php">
         <class name="Beachcasts\Airtable\Exception\UnauthorizedException" namespace="Beachcasts\Airtable\Exception">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
@@ -173,38 +172,38 @@
       </file>
     </package>
     <package name="Beachcasts\Airtable\Middleware">
-      <file name="/opt/project/src/Middleware/BearerTokenMiddleware.php">
+      <file name="/media/kat/HTDOCS/airtable-sdk-php/src/Middleware/BearerTokenMiddleware.php">
         <class name="Beachcasts\Airtable\Middleware\BearerTokenMiddleware" namespace="Beachcasts\Airtable\Middleware">
-          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
+          <metrics complexity="2" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="6" elements="9" coveredelements="7"/>
         </class>
-        <line num="16" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="13"/>
-        <line num="18" type="stmt" count="13"/>
-        <line num="19" type="stmt" count="13"/>
-        <line num="21" type="method" name="__invoke" visibility="public" complexity="1" crap="1" count="7"/>
+        <line num="16" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="14"/>
+        <line num="18" type="stmt" count="14"/>
+        <line num="19" type="stmt" count="14"/>
+        <line num="21" type="method" name="__invoke" visibility="public" complexity="1" crap="1.01" count="7"/>
         <line num="23" type="stmt" count="7"/>
         <line num="24" type="stmt" count="7"/>
-        <line num="25" type="stmt" count="7"/>
+        <line num="25" type="stmt" count="0"/>
         <line num="26" type="stmt" count="7"/>
         <line num="27" type="stmt" count="7"/>
-        <metrics loc="31" ncloc="28" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
+        <metrics loc="31" ncloc="28" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="6" elements="9" coveredelements="7"/>
       </file>
     </package>
     <package name="Beachcasts\Airtable\Request">
-      <file name="/opt/project/src/Request/TableRequest.php">
+      <file name="/media/kat/HTDOCS/airtable-sdk-php/src/Request/TableRequest.php">
         <class name="Beachcasts\Airtable\Request\TableRequest" namespace="Beachcasts\Airtable\Request">
-          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="8" coveredelements="8"/>
+          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="6" elements="8" coveredelements="6"/>
         </class>
-        <line num="12" type="method" name="createRecords" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="12" type="method" name="createRecords" visibility="public" complexity="1" crap="1.00" count="1"/>
         <line num="14" type="stmt" count="1"/>
         <line num="15" type="stmt" count="1"/>
         <line num="17" type="stmt" count="1"/>
         <line num="18" type="stmt" count="1"/>
         <line num="21" type="stmt" count="1"/>
-        <line num="23" type="stmt" count="1"/>
+        <line num="23" type="stmt" count="0"/>
         <line num="25" type="stmt" count="1"/>
-        <metrics loc="30" ncloc="30" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="8" coveredelements="8"/>
+        <metrics loc="30" ncloc="30" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="6" elements="8" coveredelements="6"/>
       </file>
     </package>
-    <metrics files="17" loc="617" ncloc="381" classes="5" methods="22" coveredmethods="22" conditionals="0" coveredconditionals="0" statements="72" coveredstatements="72" elements="94" coveredelements="94"/>
+    <metrics files="17" loc="605" ncloc="381" classes="5" methods="22" coveredmethods="20" conditionals="0" coveredconditionals="0" statements="71" coveredstatements="69" elements="93" coveredelements="89"/>
   </project>
 </coverage>
