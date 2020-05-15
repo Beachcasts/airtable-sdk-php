@@ -34,7 +34,7 @@ class AirtableClient
     {
         Assert::that($baseId)
             ->notBlank('AirTable requires a non-empty $baseId');
-        
+
         $this->client = new Client(
             [
                 'base_uri' => $config->getBaseUrl() . '/' . $config->getVersion() . '/' . $baseId . '/',
@@ -59,9 +59,9 @@ class AirtableClient
         return $this->client;
     }
 
-    public function getTable(string $tableName, string $viewName = "Grid view"): Table
+    public function getTable(string $tableName): Table
     {
-        $table = new Table($tableName, $viewName);
+        $table = new Table($tableName);
         $table->setClient($this->client);
 
         return $table;

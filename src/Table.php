@@ -31,20 +31,13 @@ class Table
     protected $client;
 
     /**
-     * @var string $viewName
-     */
-    protected $viewName;
-
-    /**
      * Table constructor.
      *
      * @param string $tableName
-     * @param string $viewName
      */
-    public function __construct(string $tableName, string $viewName = "Grid view")
+    public function __construct(string $tableName)
     {
         $this->tableName = $tableName;
-        $this->viewName = $viewName;
     }
 
     /**
@@ -107,12 +100,12 @@ class Table
     }
 
     /**
-     * @todo split out to a replace method for PUT
-     *
      * @param array $data
      * @param string $type accepts PUT to replace or PATCH to update records
      * @return mixed
      * @throws \Exception
+     * @todo split out to a replace method for PUT
+     *
      */
     public function update(array $data, $type = 'PATCH')
     {
