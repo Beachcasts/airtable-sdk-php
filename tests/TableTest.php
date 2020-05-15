@@ -40,6 +40,18 @@ class TableTest extends TestCase
         ];
     }
 
+    public function testThatConstructorSetsInternalPropertyAndGetterReturnsSame(): void
+    {
+        $tableNameProperty = new \ReflectionProperty(Table::class, 'tableName');
+        $tableNameProperty->setAccessible(true);
+
+        $testTableName = sha1(random_bytes(10));
+        $table = new Table($testTableName);
+
+        $this->assertSame($testTableName, $tableNameProperty->getValue($table));
+        $this->assertSame($testTableName, $table->getName());
+    }
+
     public function testCreateRecord(): array
     {
         $response = $this->table->create($this->data['records']);
@@ -110,6 +122,8 @@ class TableTest extends TestCase
     /**
      * @depends testCreateRecord
      * @param array $record
+     * @return array
+     * @throws \Exception
      */
     public function testUpdateRecord(array $record): array
     {
@@ -140,6 +154,8 @@ class TableTest extends TestCase
     /**
      * @depends testUpdateRecord
      * @param array $record
+     * @return array
+     * @throws \Exception
      */
     public function testReplaceRecord(array $record): array
     {
