@@ -23,7 +23,7 @@ class TableTest extends TestCase
     {
         Dotenv::createImmutable(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR)->load();
         $this->config = Config::fromEnvironment();
-        $this->table = new Table(getenv('TEST_TABLE_NAME'), getenv('TEST_VIEW_NAME'));
+        $this->table = new Table(getenv('TEST_TABLE_NAME'));
 
         $airtableClient = new AirtableClient($this->config, getenv('TEST_BASE_ID'));
         $this->table->setClient($airtableClient->getClient());
