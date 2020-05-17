@@ -116,7 +116,7 @@ class TableTest extends TestCase
 
         $this->expectException(\Exception::class);
 
-        $this->table->update($this->data, 'GET');
+        $this->table->update($this->data['records'], 'GET');
     }
 
     /**
@@ -132,7 +132,7 @@ class TableTest extends TestCase
         $this->data['records'][0]['id'] = $record['records'][0]['id'];
         $this->data['records'][0]['fields']['Name'] = $newName;
 
-        $response = $this->table->update($this->data);
+        $response = $this->table->update($this->data['records']);
 
         $result = json_decode((string)$response->getBody(), true);
 
@@ -165,7 +165,7 @@ class TableTest extends TestCase
         $this->data['records'][0]['fields']['Name'] = $newName;
         unset($this->data['records'][0]['createdTime']);
 
-        $response = $this->table->update($this->data, "PUT");
+        $response = $this->table->update($this->data['records'], "PUT");
 
         $result = json_decode((string)$response->getBody(), true);
 

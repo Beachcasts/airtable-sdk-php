@@ -27,4 +27,23 @@ class TableRequest extends Request
             )
         );
     }
+
+    public static function updateRecords(string $tableName, array $records, string $type): Request
+    {
+        Assert::thatAll($records)
+            ->keyExists('fields');
+
+        return new self(
+            $type,
+            $tableName,
+            [
+                'Content-Type' => 'application/json',
+            ],
+            json_encode(
+                [
+                    'records' => $records
+                ]
+            )
+        );
+    }
 }
