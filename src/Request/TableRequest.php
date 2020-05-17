@@ -28,6 +28,19 @@ class TableRequest extends Request
         );
     }
 
+    public static function readRecords(string $tableName, string $id): Request
+    {
+        Assert::that($tableName)
+            ->notEmpty();
+        Assert::that($id)
+            ->notEmpty();
+
+        return new self(
+            'GET',
+            $tableName . '/' . $id
+        );
+    }
+
     public static function updateRecords(string $tableName, array $records, string $type): Request
     {
         Assert::thatAll($records)

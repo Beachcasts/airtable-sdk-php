@@ -96,7 +96,9 @@ class Table
      */
     public function read(string $id)
     {
-        return $this->client->request('GET', $this->tableName . '/' . $id);
+        return $this->client->send(
+            TableRequest::readRecords($this->tableName, $id)
+        );
     }
 
     /**
