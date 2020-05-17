@@ -50,16 +50,16 @@ class TableRequest extends Request
         );
     }
 
-    public static function readRecords(string $tableName, string $id): Request
+    public static function readRecords(string $tableName, string $recordId): Request
     {
         Assert::that($tableName)
-            ->notEmpty();
-        Assert::that($id)
-            ->notEmpty();
+            ->notEmpty('Table name must not be empty');
+        Assert::that($recordId)
+            ->notEmpty('Record Id must not be empty');
 
         return new self(
             'GET',
-            $tableName . '/' . $id
+            $tableName . '/' . $recordId
         );
     }
 
