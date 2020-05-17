@@ -11,8 +11,30 @@ class TableRequest extends Request
 {
     public static function createRecords(string $tableName, array $records): Request
     {
-        Assert::thatAll($records)
-            ->keyExists('fields');
+        Assert::that($tableName)
+            ->notEmpty('Table name must not be empty');
+
+        Assert::that($records)
+            ->notEmpty('Records must not be empty');
+
+        // we want to make sure we don't pass a k-v array, but numeric indexed
+        // as api expects records to be of
+        $records = array_values($records);
+
+        foreach ($records as $idx => &$record) {
+            Assert::that($record)
+                ->keyExists('fields', sprintf('Record[%d] should contain a "fields" entry', $idx));
+
+            Assert::that($record['fields'])
+                ->isArray(sprintf('Record[%d] "fields" should be Array', $idx));
+
+            if (empty($record['fields'])) {
+                $record['fields'] = new \stdClass(); // API requires fields to be object
+            } else {
+                Assert::thatAll(array_keys($record['fields']))
+                    ->string('All "fields" must be string-keyed');
+            }
+        }
 
         return new self(
             'POST',
