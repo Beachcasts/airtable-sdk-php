@@ -111,10 +111,6 @@ class Table
      */
     public function update(array $records, $type = 'PATCH')
     {
-        if (!in_array(strtolower($type), ['put', 'patch'])) {
-            throw new \Exception('Invalid method type.');
-        }
-
         return $this->client->send(
             TableRequest::updateRecords($this->getName(), $records, $type)
         );

@@ -45,9 +45,11 @@ class TableRequest extends Request
     {
         Assert::thatAll($records)
             ->keyExists('fields');
+        Assert::that(strtoupper($type))
+            ->inArray(['PUT', 'PATCH']);
 
         return new self(
-            $type,
+            strtoupper($type),
             $tableName,
             [
                 'Content-Type' => 'application/json',

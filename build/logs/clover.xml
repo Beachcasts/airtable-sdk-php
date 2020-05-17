@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1589742215">
-  <project timestamp="1589742215">
+<coverage generated="1589744441">
+  <project timestamp="1589744441">
     <package name="Beachcasts\Airtable">
       <file name="/opt/project/src/AirtableClient.php">
         <class name="Beachcasts\Airtable\AirtableClient" namespace="Beachcasts\Airtable" fullPackage="Beachcasts" package="Beachcasts">
@@ -61,7 +61,7 @@
       </file>
       <file name="/opt/project/src/Table.php">
         <class name="Beachcasts\Airtable\Table" namespace="Beachcasts\Airtable" fullPackage="Beachcasts" package="Beachcasts">
-          <metrics complexity="10" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="20" coveredstatements="20" elements="28" coveredelements="28"/>
+          <metrics complexity="9" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="18" elements="26" coveredelements="26"/>
         </class>
         <line num="38" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="9"/>
         <line num="40" type="stmt" count="9"/>
@@ -69,8 +69,8 @@
         <line num="46" type="method" name="setClient" visibility="public" complexity="1" crap="1" count="9"/>
         <line num="48" type="stmt" count="9"/>
         <line num="49" type="stmt" count="9"/>
-        <line num="54" type="method" name="getName" visibility="public" complexity="2" crap="2" count="5"/>
-        <line num="56" type="stmt" count="5"/>
+        <line num="54" type="method" name="getName" visibility="public" complexity="2" crap="2" count="6"/>
+        <line num="56" type="stmt" count="6"/>
         <line num="72" type="method" name="list" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="75" type="stmt" count="1"/>
         <line num="77" type="stmt" count="1"/>
@@ -81,17 +81,15 @@
         <line num="97" type="method" name="read" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="99" type="stmt" count="1"/>
         <line num="100" type="stmt" count="1"/>
-        <line num="112" type="method" name="update" visibility="public" complexity="2" crap="2" count="3"/>
+        <line num="112" type="method" name="update" visibility="public" complexity="1" crap="1" count="3"/>
         <line num="114" type="stmt" count="3"/>
-        <line num="115" type="stmt" count="1"/>
-        <line num="118" type="stmt" count="2"/>
-        <line num="119" type="stmt" count="2"/>
-        <line num="127" type="method" name="delete" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="115" type="stmt" count="3"/>
+        <line num="123" type="method" name="delete" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="125" type="stmt" count="1"/>
+        <line num="126" type="stmt" count="1"/>
+        <line num="127" type="stmt" count="1"/>
         <line num="129" type="stmt" count="1"/>
-        <line num="130" type="stmt" count="1"/>
-        <line num="131" type="stmt" count="1"/>
-        <line num="133" type="stmt" count="1"/>
-        <metrics loc="137" ncloc="75" classes="1" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="20" coveredstatements="20" elements="28" coveredelements="28"/>
+        <metrics loc="133" ncloc="71" classes="1" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="18" elements="26" coveredelements="26"/>
       </file>
     </package>
     <package name="Beachcasts\Airtable\Exception">
@@ -188,7 +186,7 @@
     <package name="Beachcasts\Airtable\Request">
       <file name="/opt/project/src/Request/TableRequest.php">
         <class name="Beachcasts\Airtable\Request\TableRequest" namespace="Beachcasts\Airtable\Request">
-          <metrics complexity="3" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="21" coveredstatements="21" elements="24" coveredelements="24"/>
+          <metrics complexity="3" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="23" coveredstatements="23" elements="26" coveredelements="26"/>
         </class>
         <line num="12" type="method" name="createRecords" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="14" type="stmt" count="1"/>
@@ -206,17 +204,19 @@
         <line num="38" type="stmt" count="1"/>
         <line num="39" type="stmt" count="1"/>
         <line num="40" type="stmt" count="1"/>
-        <line num="44" type="method" name="updateRecords" visibility="public" complexity="1" crap="1" count="2"/>
-        <line num="46" type="stmt" count="2"/>
-        <line num="47" type="stmt" count="2"/>
-        <line num="49" type="stmt" count="2"/>
-        <line num="50" type="stmt" count="2"/>
-        <line num="53" type="stmt" count="2"/>
+        <line num="44" type="method" name="updateRecords" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="46" type="stmt" count="3"/>
+        <line num="47" type="stmt" count="3"/>
+        <line num="48" type="stmt" count="3"/>
+        <line num="49" type="stmt" count="3"/>
+        <line num="51" type="stmt" count="2"/>
+        <line num="52" type="stmt" count="2"/>
         <line num="55" type="stmt" count="2"/>
         <line num="57" type="stmt" count="2"/>
-        <metrics loc="62" ncloc="62" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="21" coveredstatements="21" elements="24" coveredelements="24"/>
+        <line num="59" type="stmt" count="2"/>
+        <metrics loc="64" ncloc="64" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="23" coveredstatements="23" elements="26" coveredelements="26"/>
       </file>
     </package>
-    <metrics files="17" loc="630" ncloc="406" classes="5" methods="24" coveredmethods="24" conditionals="0" coveredconditionals="0" statements="82" coveredstatements="82" elements="106" coveredelements="106"/>
+    <metrics files="17" loc="628" ncloc="404" classes="5" methods="24" coveredmethods="24" conditionals="0" coveredconditionals="0" statements="82" coveredstatements="82" elements="106" coveredelements="106"/>
   </project>
 </coverage>
