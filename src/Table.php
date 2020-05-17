@@ -96,32 +96,23 @@ class Table
      */
     public function read(string $id)
     {
-        return $this->client->request('GET', $this->tableName . '/' . $id);
+        return $this->client->send(
+            TableRequest::readRecords($this->tableName, $id)
+        );
     }
 
     /**
-     * @param array $data
+     * @param array $records
      * @param string $type accepts PUT to replace or PATCH to update records
      * @return mixed
      * @throws \Exception
      * @todo split out to a replace method for PUT
      *
      */
-    public function update(array $data, $type = 'PATCH')
+    public function update(array $records, $type = 'PATCH')
     {
-        if (!in_array(strtolower($type), ['put', 'patch'])) {
-            throw new \Exception('Invalid method type.');
-        }
-
-        return $this->client->request(
-            strtoupper($type),
-            $this->tableName,
-            [
-                'headers' => [
-                    'Content-Type' => 'application/json',
-                ],
-                'body' => json_encode($data),
-            ]
+        return $this->client->send(
+            TableRequest::updateRecords($this->getName(), $records, $type)
         );
     }
 

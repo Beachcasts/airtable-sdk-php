@@ -45,6 +45,6 @@ $jsonData = '{
 
 $data = json_decode($jsonData, true);
 
-$content = $table->update($data, 'put');
+$content = $table->update($data['records'], 'put');
 
 echo $content->getBody()->getContents();
