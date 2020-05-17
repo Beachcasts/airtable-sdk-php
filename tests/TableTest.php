@@ -8,6 +8,7 @@ use Beachcasts\Airtable\AirtableClient as AirtableClient;
 use Beachcasts\Airtable\Config;
 use Beachcasts\Airtable\Table;
 use Dotenv\Dotenv;
+use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -201,5 +202,26 @@ class TableTest extends TestCase
         );
 
         $this->assertTrue($result['records'][0]['deleted']);
+    }
+
+    /**
+     * @depends testDeleteRecord
+     *
+     * This tests that when we pass an empty fields array, that it gets converted correctly to object
+     *    which the API requires.
+     */
+    public function testCreateRecordAllowsEmptyFields(): void
+    {
+        /** @var Response $response */
+        $response = $this->table->create([['fields' => []]]);
+
+        $this->assertEquals(
+            '200',
+            $response->getStatusCode(),
+            'API did not return HTTP 200'
+        );
+
+        $result = json_decode((string)$response->getBody(), true);
+        $this->table->delete($result['records']['0']['id']);
     }
 }
