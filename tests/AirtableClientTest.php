@@ -84,8 +84,7 @@ class AirtableClientTest extends TestCase
     public function testThatGetTableReturnsCorrectlyConfiguredTableObject(): void
     {
         $tableName = sha1(random_bytes(10));
-        $viewMode = sha1(random_bytes(10));
-        $result = $this->airtableClient->getTable($tableName, $viewMode);
+        $result = $this->airtableClient->getTable($tableName);
 
         $tableNameProperty = new \ReflectionProperty(Table::class, 'tableName');
         $tableNameProperty->setAccessible(true);
