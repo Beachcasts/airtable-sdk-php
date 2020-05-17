@@ -30,18 +30,16 @@ class Config
         $this->apiKey = $apiKey;
     }
 
-    public static function fromEnvironment(): Config
+    public static function fromEnvironment(): self
     {
         $baseUrl = getenv('BASE_URL');
         $version = getenv('VERSION');
         $apiKey = getenv('API_KEY');
 
-        self::validateValues($baseUrl, $version, $apiKey);
-
-        return new self($baseUrl, $version, $apiKey);
+        return self::fromValues($baseUrl, $version, $apiKey);
     }
 
-    public static function fromValues(string $baseUrl, string $version, string $apiKey): Config
+    public static function fromValues(string $baseUrl, string $version, string $apiKey): self
     {
         self::validateValues($baseUrl, $version, $apiKey);
 
