@@ -43,8 +43,11 @@ class TableRequest extends Request
 
     public static function updateRecords(string $tableName, array $records, string $type): Request
     {
+        Assert::that($tableName)
+            ->notEmpty();
         Assert::thatAll($records)
-            ->keyExists('fields');
+            ->keyExists('fields')
+            ->keyExists('id');
         Assert::that(strtoupper($type))
             ->inArray(['PUT', 'PATCH']);
 
