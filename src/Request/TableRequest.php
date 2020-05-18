@@ -66,12 +66,31 @@ class TableRequest extends Request
     public static function updateRecords(string $tableName, array $records, string $type): Request
     {
         Assert::that($tableName)
-            ->notEmpty();
-        Assert::thatAll($records)
-            ->keyExists('fields')
-            ->keyExists('id');
+            ->notEmpty('Table name must not be empty');
+
+        Assert::that($records)
+            ->notEmpty('Records must not be empty');
+
         Assert::that(strtoupper($type))
-            ->inArray(['PUT', 'PATCH']);
+            ->inArray(['PUT', 'PATCH'], 'Update type should be either PATCH or PUT');
+
+        // we want to make sure we don't pass a k-v array, but numeric indexed
+        // as api expects records to be of
+        $records = array_values($records);
+
+        foreach ($records as $idx => $record) {
+            Assert::that($record)
+                ->keyExists('id', sprintf('Record[%d] requires an "id" entry', $idx))
+                ->notEmptyKey('id', sprintf('Record[%d] requires "id" to not be empty', $idx))
+                ->keyExists('fields', sprintf('Record[%d] should contain a "fields" entry', $idx));
+
+            Assert::that($record['fields'])
+                ->isArray(sprintf('Record[%d] "fields" should be Array', $idx))
+                ->notEmpty(sprintf('Record[%d] "fields" should not be empty', $idx));
+
+            Assert::thatAll(array_keys($record['fields']))
+                ->string(sprintf('Record[%d] "fields" should be string-keyed', $idx));
+        }
 
         return new self(
             strtoupper($type),

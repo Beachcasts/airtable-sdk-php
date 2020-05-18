@@ -156,4 +156,136 @@ class TableRequestTest extends TestCase
 
         $this->assertEmpty($readRecordsRequest->getBody()->getContents());
     }
+
+    public function badUpdateRecordsDataProvider(): array
+    {
+        return [
+            'table name empty' => [
+                'tableName' => '',
+                'records' => [],
+                'type' => 'PATCH',
+                'message' => 'Table name must not be empty'
+            ],
+            'records name empty' => [
+                'tableName' => 'tableName',
+                'records' => [],
+                'type' => 'PATCH',
+                'message' => 'Records must not be empty'
+            ],
+            'type not Patch or PUT' => [
+                'tableName' => 'tableName',
+                'records' => [[]],
+                'type' => 'invalid',
+                'message' => 'Update type should be either PATCH or PUT'
+            ],
+            'each record should have id' => [
+                'tableName' => 'tableName',
+                'records' => [
+                    [
+
+                    ]
+                ],
+                'type' => 'PATCH',
+                'message' => 'Record[0] requires an "id" entry'
+            ],
+            'each record should have non empty id' => [
+                'tableName' => 'tableName',
+                'records' => [
+                    [
+                        'id' => ''
+                    ]
+                ],
+                'type' => 'PATCH',
+                'message' => 'Record[0] requires "id" to not be empty'
+            ],
+            'each record should have fields' => [
+                'tableName' => 'tableName',
+                'records' => [
+                    [
+                        'id' => random_int(11, 99),
+                    ]
+                ],
+                'type' => 'PATCH',
+                'message' => 'Record[0] should contain a "fields" entry'
+            ],
+            'each record fields should be an array' => [
+                'tableName' => 'tableName',
+                'records' => [
+                    [
+                        'id' => random_int(11, 99),
+                        'fields' => '',
+                    ]
+                ],
+                'type' => 'PATCH',
+                'message' => 'Record[0] "fields" should be Array'
+            ],
+            'each record fields should not be empty' => [
+                'tableName' => 'tableName',
+                'records' => [
+                    [
+                        'id' => random_int(11, 99),
+                        'fields' => [],
+                    ]
+                ],
+                'type' => 'PATCH',
+                'message' => 'Record[0] "fields" should not be empty'
+            ],
+            'each of record fields should string keyed' => [
+                'tableName' => 'tableName',
+                'records' => [
+                    [
+                        'id' => random_int(11, 99),
+                        'fields' => [
+                            0 => 'test'
+                        ],
+                    ]
+                ],
+                'type' => 'PATCH',
+                'message' => 'Record[0] "fields" should be string-keyed'
+            ],
+        ];
+    }
+
+    /**
+     * @dataProvider badUpdateRecordsDataProvider
+     * @param string $tableName
+     * @param array $records
+     * @param string $type
+     * @param string $message
+     */
+    public function testThatUpdateRecordsThrowsExpectedExceptionWithBadData(
+        string $tableName,
+        array $records,
+        string $type,
+        string $message
+    ): void {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage($message);
+
+        TableRequest::updateRecords($tableName, $records, $type);
+    }
+
+    public function testThatUpdateRecordsReturnsCorrectlyFormattedRequest(): void
+    {
+        $tableName = sha1(random_bytes(10));
+        $records = [
+            [
+                'id' => random_int(11, 99),
+                'fields' => [
+                    'Name' => sha1(random_bytes(10))
+                ]
+            ]
+        ];
+
+        foreach (['PUT', 'PATCH'] as $type) {
+            $updateRecordsRequest = TableRequest::updateRecords($tableName, $records, $type);
+
+            $this->assertSame($type, $updateRecordsRequest->getMethod());
+            $this->assertSame($tableName, $updateRecordsRequest->getUri()->getPath());
+            $this->assertSame(
+                json_encode(['records' => $records]),
+                $updateRecordsRequest->getBody()->getContents()
+            );
+        }
+    }
 }
