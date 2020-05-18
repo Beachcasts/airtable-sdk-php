@@ -210,7 +210,7 @@ class TableTest extends TestCase
      * This tests that when we pass an empty fields array, that it gets converted correctly to object
      *    which the API requires.
      */
-    public function testCreateRecordAllowsEmptyFields(): void
+    public function testThatCreateRecordAllowsEmptyFields(): void
     {
         /** @var Response $response */
         $response = $this->table->create([['fields' => []]]);
