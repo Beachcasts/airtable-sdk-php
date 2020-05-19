@@ -137,6 +137,5 @@ class TableRequest extends Request
             'GET',
             $tableName . '?' . $queryString
         );
-
     }
 }
