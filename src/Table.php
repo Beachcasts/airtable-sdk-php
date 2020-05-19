@@ -69,14 +69,18 @@ class Table
      * @param array $params
      * @return ResponseInterface
      */
-    public function list(array $params): ResponseInterface
+    public function list(array $params)
     {
 //        if (!empty($params))
-        $queryString = http_build_query($params);
+//        $queryString = http_build_query($params);
+//
+//        $url = $this->tableName . '?' . $queryString;
 
-        $url = $this->tableName . '?' . $queryString;
+//        return $this->client->request('GET', $url);
 
-        return $this->client->request('GET', $url);
+        return $this->client->send(
+            TableRequest::listRecords($this->getName(), $params)
+        );
     }
 
     /**

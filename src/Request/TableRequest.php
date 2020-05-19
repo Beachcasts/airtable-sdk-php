@@ -125,4 +125,18 @@ class TableRequest extends Request
             $tableName . '?' . http_build_query($deleteRecords)
         );
     }
+
+    public static function listRecords(string $tableName, array $params)
+    {
+        Assert::that($tableName)
+            ->notEmpty('Table name must not be empty');
+
+        $queryString = http_build_query($params);
+
+        return new self(
+            'GET',
+            $tableName . '?' . $queryString
+        );
+
+    }
 }
