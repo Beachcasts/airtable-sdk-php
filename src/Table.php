@@ -117,17 +117,13 @@ class Table
     }
 
     /**
-     * @param string $id
+     * @param string $recordId
      * @return mixed
      */
-    public function delete(string $id)
+    public function delete(string $recordId)
     {
-        return $this->client->request(
-            'DELETE',
-            $this->tableName,
-            [
-                'query' => ['records[]' => $id],
-            ]
+        return $this->client->send(
+            TableRequest::deleteRecords($this->getName(), $recordId)
         );
     }
 }
