@@ -288,4 +288,85 @@ class TableRequestTest extends TestCase
             );
         }
     }
+
+    public function badDeleteRecordsDataProvider(): array
+    {
+        return [
+            'table name empty' => [
+                'tableName' => '',
+                'id' => sha1(random_bytes(10)),
+                'message' => 'Table name must not be empty'
+            ],
+            'id empty' => [
+                'tableName' => sha1(random_bytes(10)),
+                'id' => '',
+                'message' => 'Record Id must not be empty'
+            ]
+        ];
+    }
+
+    /**
+     * @dataProvider badDeleteRecordsDataProvider
+     * @param string $tableName
+     * @param string $id
+     * @param string $message
+     */
+    public function testThatDeleteRecordsThrowsExpectedExceptionWithBadData(
+        string $tableName,
+        string $id,
+        string $message
+    ): void {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage($message);
+
+        TableRequest::deleteRecords($tableName, $id);
+    }
+
+    public function testThatDeleteRecordsReturnsCorrectlyFormattedRequest(): void
+    {
+        $tableName = sha1(random_bytes(10));
+        $recordId = (string)random_int(11, 99);
+        $queryEncoded = http_build_query(['records' => [$recordId]]);
+        $deleteRecordsResponse = TableRequest::deleteRecords($tableName, $recordId);
+        $this->assertSame($tableName, $deleteRecordsResponse->getUri()->getPath());
+        $this->assertSame($queryEncoded, $deleteRecordsResponse->getUri()->getQuery());
+    }
+
+    public function badListRecordsDataProvider(): array
+    {
+        return [
+            'table name empty' => [
+                'tableName' => '',
+                'params' => [],
+                'message' => 'Table name must not be empty'
+            ],
+        ];
+    }
+
+    /**
+     * @dataProvider badListRecordsDataProvider
+     * @param string $tableName
+     * @param array $params
+     * @param string $message
+     */
+    public function testThatListRecordsThrowsExpectedExceptionWithBadData(
+        string $tableName,
+        array $params,
+        string $message
+    ): void {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage($message);
+
+        TableRequest::listRecords($tableName, $params);
+    }
+
+    public function testThatListRecordsReturnsCorrectlyFormattedRequest(): void
+    {
+        $tableName = sha1(random_bytes(10));
+        $params = ['test-random' => (string)random_int(11, 99)];
+        $queryEncoded = http_build_query($params);
+        $deleteRecordsResponse = TableRequest::listRecords($tableName, $params);
+        $this->assertSame($tableName, $deleteRecordsResponse->getUri()->getPath());
+        $this->assertSame($queryEncoded, $deleteRecordsResponse->getUri()->getQuery());
+    }
 }
