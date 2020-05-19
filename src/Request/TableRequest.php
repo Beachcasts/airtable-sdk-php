@@ -105,4 +105,38 @@ class TableRequest extends Request
             )
         );
     }
+
+    public static function deleteRecords(string $tableName, string $recordId): Request
+    {
+        Assert::that($tableName)
+            ->notEmpty('Table name must not be empty');
+
+        Assert::that($recordId)
+            ->notEmpty('Record Id must not be empty');
+
+        $deleteRecords = [
+            'records' => [
+                $recordId
+            ]
+        ];
+
+        return new self(
+            'DELETE',
+            $tableName . '?' . http_build_query($deleteRecords)
+        );
+    }
+
+    public static function listRecords(string $tableName, array $params)
+    {
+        Assert::that($tableName)
+            ->notEmpty('Table name must not be empty');
+
+        $queryString = http_build_query($params);
+
+        return new self(
+            'GET',
+            $tableName . '?' . $queryString
+        );
+
+    }
 }

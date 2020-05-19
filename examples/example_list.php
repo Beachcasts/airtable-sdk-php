@@ -8,13 +8,13 @@ use Beachcasts\Airtable\Config;
 
 Dotenv\Dotenv::createImmutable(__DIR__ . '/../')->load();
 
-$baseId = 'app8x7Rjk38VF0z8V';
-$tableName = 'Content production';
-$viewName = 'Content pipeline';
+$baseId = 'app87iLOq33mUgCFA';
+$tableName = 'Table 1';
+$viewName = 'Grid view';
 
 $airtableClient = new AirtableClient(Config::fromEnvironment(), $baseId);
 
-$table = $airtableClient->getTable($tableName, $viewName);
+$table = $airtableClient->getTable($tableName);
 
 $params = [
     'maxRecords' => 3,

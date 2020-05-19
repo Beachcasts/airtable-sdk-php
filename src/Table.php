@@ -69,14 +69,18 @@ class Table
      * @param array $params
      * @return ResponseInterface
      */
-    public function list(array $params): ResponseInterface
+    public function list(array $params)
     {
 //        if (!empty($params))
-        $queryString = http_build_query($params);
+//        $queryString = http_build_query($params);
+//
+//        $url = $this->tableName . '?' . $queryString;
 
-        $url = $this->tableName . '?' . $queryString;
+//        return $this->client->request('GET', $url);
 
-        return $this->client->request('GET', $url);
+        return $this->client->send(
+            TableRequest::listRecords($this->getName(), $params)
+        );
     }
 
     /**
@@ -117,17 +121,13 @@ class Table
     }
 
     /**
-     * @param string $id
+     * @param string $recordId
      * @return mixed
      */
-    public function delete(string $id)
+    public function delete(string $recordId)
     {
-        return $this->client->request(
-            'DELETE',
-            $this->tableName,
-            [
-                'query' => ['records[]' => $id],
-            ]
+        return $this->client->send(
+            TableRequest::deleteRecords($this->getName(), $recordId)
         );
     }
 }
