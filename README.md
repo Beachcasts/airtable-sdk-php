@@ -26,26 +26,23 @@ $ composer require beachcasts/airtable-sdk-php
 
 ## Usage
 
-Rename `.env.default` to `.env`, and update as needed.
+Copy the file `.env.default` to `.env`, and update as needed.
 
-Below is what a sample usage might look like, in the SDK current unfinished state.
+Base usage requires instantiation of the AirtableClient, as shown below:
+
 ``` php
 require_once('vendor/autoload.php');
 
 use Beachcasts\Airtable\AirtableClient;
 use Beachcasts\Airtable\Config;
 
-Dotenv\Dotenv::createImmutable(__DIR__)->load();
-$baseId = getenv('BASE_ID');
-
-$airtableClient = new AirtableClient(Config::fromEnvironment(), $baseId);
-
-// getTable($tableName, $viewName);
-$table = $airtableClient->getTable('Content production', 'Content pipeline');
-$content = $table->list(['fields' = ['column_1_name']]);
-
-echo $content->getBody()->getContents();
+$airtableClient = new AirtableClient(Config::fromEnvironment(), <your_baseid>);
+$table = $airtableClient->getTable(<your_table_name>);
 ```
+
+NOTE: Update `<your_baseid>` and `<your_table_name>` as needed.
+
+For more details of how to use the AirtableClient, see the `/docs`, where examples highlight using `create()`, `read()`, `update()`, `delete()`, and `list()` methods on/with Airtable data.
 
 ## Change log
 
