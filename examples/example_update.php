@@ -1,7 +1,5 @@
 <?php
 
-// @todo refactor to TableRequest->updateRecords()
-
 // example usage file
 require_once('../vendor/autoload.php');
 
