@@ -1,3 +1,10 @@
+---
+permalink: /list.html
+---
+
+## List() method usage
+
+```php
 <?php
 
 // example usage file
@@ -8,14 +15,20 @@ use Beachcasts\Airtable\Config;
 
 Dotenv\Dotenv::createImmutable(__DIR__ . '/../')->load();
 
-$baseId = 'app87iLOq33mUgCFA';
-$tableName = 'Table 1';
+$baseId = <your_base_id>;
+$tableName = <your_table_name>;
+$viewName = <your_view_name>;
 
 $airtableClient = new AirtableClient(Config::fromEnvironment(), $baseId);
 
 $table = $airtableClient->getTable($tableName);
 
-$id = 'recaoeoYmvW36NdMh';
-$content = $table->delete($id);
+$params = [
+    'maxRecords' => 3,
+    'view' => $viewName
+];
+
+$content = $table->list($params);
 
 echo $content->getBody()->getContents();
+```

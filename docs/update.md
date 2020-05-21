@@ -1,3 +1,10 @@
+---
+permalink: /update.html
+---
+
+## Update() method usage
+
+```php
 <?php
 
 // example usage file
@@ -8,8 +15,8 @@ use Beachcasts\Airtable\Config;
 
 Dotenv\Dotenv::createImmutable(__DIR__ . '/../')->load();
 
-$baseId = 'app8x7Rjk38VF0z8V';
-$tableName = 'Content production';
+$baseId = <your_base_id>;
+$tableName = <your_table_name>;
 
 $airtableClient = new AirtableClient(Config::fromEnvironment(), $baseId);
 
@@ -48,3 +55,4 @@ $data = json_decode($jsonData, true);
 $content = $table->update($data['records'], 'patch');
 
 echo $content->getBody()->getContents();
+```

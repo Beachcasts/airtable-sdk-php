@@ -1,3 +1,10 @@
+---
+permalink: /read.html
+---
+
+## Read method usage
+
+```php
 <?php
 
 // example usage file
@@ -8,14 +15,16 @@ use Beachcasts\Airtable\Config;
 
 Dotenv\Dotenv::createImmutable(__DIR__ . '/../')->load();
 
-$baseId = 'app87iLOq33mUgCFA';
-$tableName = 'Table 1';
+$baseId = <your_base_id>;
+$tableName = <your_table_name>;
 
 $airtableClient = new AirtableClient(Config::fromEnvironment(), $baseId);
 
 $table = $airtableClient->getTable($tableName);
 
-$id = 'recaoeoYmvW36NdMh';
-$content = $table->delete($id);
+$id = 'recZkovNIUzjkU4eR';
+$content = $table->read($id);
 
 echo $content->getBody()->getContents();
+
+```

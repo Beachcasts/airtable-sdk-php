@@ -1,3 +1,10 @@
+---
+permalink: /replace.html
+---
+
+## Replace usages
+
+```php
 <?php
 
 // example usage file
@@ -8,8 +15,8 @@ use Beachcasts\Airtable\Config;
 
 Dotenv\Dotenv::createImmutable(__DIR__ . '/../')->load();
 
-$baseId = 'app8x7Rjk38VF0z8V';
-$tableName = 'Content production';
+$baseId = <your_base_id>;
+$tableName = <your_table_name>;
 
 $airtableClient = new AirtableClient(Config::fromEnvironment(), $baseId);
 
@@ -20,7 +27,7 @@ $jsonData = '{
     {
       "id": "recZkovNIUzjkU4eR",
       "fields": {
-        "Headline": "Poolside views - Adam",
+        "Headline": "Poolside views - BinaryKitten",
         "Section": "Our picks",
         "Author": {
           "id": "usru7j5m2lcNhriKv",
@@ -45,6 +52,7 @@ $jsonData = '{
 
 $data = json_decode($jsonData, true);
 
-$content = $table->update($data['records'], 'patch');
+$content = $table->update($data['records'], 'put');
 
 echo $content->getBody()->getContents();
+```

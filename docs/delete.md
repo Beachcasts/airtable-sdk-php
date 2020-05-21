@@ -1,3 +1,10 @@
+---
+permalink: /delete.html
+---
+
+## Delete() method usage
+
+```php
 <?php
 
 // example usage file
@@ -8,8 +15,8 @@ use Beachcasts\Airtable\Config;
 
 Dotenv\Dotenv::createImmutable(__DIR__ . '/../')->load();
 
-$baseId = 'app87iLOq33mUgCFA';
-$tableName = 'Table 1';
+$baseId = <your_base_id>;
+$tableName = <your_table_name>;
 
 $airtableClient = new AirtableClient(Config::fromEnvironment(), $baseId);
 
@@ -19,3 +26,4 @@ $id = 'recaoeoYmvW36NdMh';
 $content = $table->delete($id);
 
 echo $content->getBody()->getContents();
+```
