@@ -11,6 +11,10 @@ This Airtable SDK for PHP makes it easier to leverage the Airtable API leveragin
 
 NOTE: This project is under active development, and is NOT ready for use.
 
+## Documentation
+
+Go to: [https://beachcasts.github.io/airtable-sdk-php/](https://beachcasts.github.io/airtable-sdk-php/)
+
 ## Prerequisites
 
 * Composer installed globally
@@ -42,7 +46,7 @@ $table = $airtableClient->getTable(<your_table_name>);
 
 NOTE: Update `<your_baseid>` and `<your_table_name>` as needed.
 
-For more details of how to use the AirtableClient, see the `/docs`, where examples highlight using `create()`, `read()`, `update()`, `delete()`, and `list()` methods on/with Airtable data.
+For more details of how to use the AirtableClient, see the [/docs](https://beachcasts.github.io/airtable-sdk-php/), where examples highlight using `create()`, `read()`, `update()`, `delete()`, and `list()` methods on/with Airtable data.
 
 ## Change log
 
