@@ -10,11 +10,10 @@ Dotenv\Dotenv::createImmutable(__DIR__ . '/../')->load();
 
 $baseId = 'app87iLOq33mUgCFA';
 $tableName = 'Table 1';
-$viewName = 'Grid view';
 
 $airtableClient = new AirtableClient(Config::fromEnvironment(), $baseId);
 
-$table = $airtableClient->getTable($tableName, $viewName);
+$table = $airtableClient->getTable($tableName);
 
 $id = 'recaoeoYmvW36NdMh';
 $content = $table->delete($id);
