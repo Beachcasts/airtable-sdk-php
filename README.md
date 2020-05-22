@@ -28,7 +28,7 @@ Via Composer
 $ composer require beachcasts/airtable-sdk-php
 ```
 
-## Usage
+## Quick Start
 
 Copy the file `.env.default` to `.env`, and update as needed.
 
@@ -39,6 +39,8 @@ require_once('vendor/autoload.php');
 
 use Beachcasts\Airtable\AirtableClient;
 use Beachcasts\Airtable\Config;
+
+// Add .env contents to your environment - see documentation for recomendations
 
 $airtableClient = new AirtableClient(Config::fromEnvironment(), <your_baseid>);
 $table = $airtableClient->getTable(<your_table_name>);

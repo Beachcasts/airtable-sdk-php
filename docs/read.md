@@ -5,9 +5,6 @@ permalink: /read.html
 ## Read method usage
 
 ```php
-<?php
-
-// example usage file
 require_once('../vendor/autoload.php');
 
 use Beachcasts\Airtable\AirtableClient;
