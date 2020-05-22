@@ -19,7 +19,7 @@ $airtableClient = new AirtableClient(Config::fromEnvironment(), $baseId);
 
 $table = $airtableClient->getTable($tableName);
 
-$id = 'recaoeoYmvW36NdMh';
+$id = <your_record_id>;
 $content = $table->delete($id);
 
 echo $content->getBody()->getContents();
