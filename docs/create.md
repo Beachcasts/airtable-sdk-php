@@ -19,6 +19,7 @@ $airtableClient = new AirtableClient(Config::fromEnvironment(), $baseId);
 
 $table = $airtableClient->getTable($tableName);
 
+// The following is dummy data, replace with your own
 $jsonData = '{
   "records": [
     {

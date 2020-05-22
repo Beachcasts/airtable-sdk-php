@@ -19,7 +19,7 @@ $airtableClient = new AirtableClient(Config::fromEnvironment(), $baseId);
 
 $table = $airtableClient->getTable($tableName);
 
-$id = 'recZkovNIUzjkU4eR';
+$id = <your_record_id>;
 $content = $table->read($id);
 
 echo $content->getBody()->getContents();
