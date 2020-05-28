@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Beachcasts\AirtableTests;
+namespace Beachcasts\AirtableTests\Unit;
 
 use Assert\InvalidArgumentException;
 use Beachcasts\Airtable\AirtableClient;
@@ -33,8 +33,6 @@ class AirtableClientTest extends TestCase
 
     protected function setUp(): void
     {
-        Dotenv::createImmutable(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR)->load();
-
         $this->config = Config::fromValues(
             'https://google.com',
             'v0',
