@@ -45,9 +45,9 @@ class ConfigTest extends TestCase
      */
     public function testThatFromEnvironmentFailsWhenNoEnvironSet(): void
     {
-        putenv('BASE_URL');
-        putenv('VERSION');
-        putenv('API_KEY');
+        putenv('AIRTABLE_BASE_URL');
+        putenv('AIRTABLE_API_VERSION');
+        putenv('AIRTABLE_API_KEY');
         $this->expectException(TypeError::class);
         Config::fromEnvironment();
     }
