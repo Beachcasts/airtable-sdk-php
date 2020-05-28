@@ -15,7 +15,7 @@ before_script:
 - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-dist
 - touch .env
 script:
-- vendor/bin/phpcs --standard=psr2 src/
+- vendor/bin/phpcs --standard=phpcs.xml.dist src/
 - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
 after_script:
 - |
