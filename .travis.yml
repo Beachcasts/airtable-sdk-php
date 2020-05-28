@@ -16,7 +16,7 @@ before_script:
 - touch .env
 script:
 - vendor/bin/phpcs --standard=phpcs.xml.dist src/
-- vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+- vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover --testsuite=unit
 after_script:
 - |
   if [[ "$TRAVIS_PHP_VERSION" != 'hhvm' ]]; then
