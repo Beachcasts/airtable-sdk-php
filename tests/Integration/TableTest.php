@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Beachcasts\AirtableTests\Integration;
 
-use Beachcasts\Airtable\AirtableClient as AirtableClient;
+use Beachcasts\Airtable\AirtableClient;
 use Beachcasts\Airtable\Config;
 use Beachcasts\Airtable\Table;
 use Dotenv\Dotenv;
