@@ -5,6 +5,4 @@ phpcs.xml
 .idea
 .vscode
 tests/.env
-build/coverage
 build/*
-!build/logs
