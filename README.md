@@ -30,8 +30,6 @@ $ composer require beachcasts/airtable-sdk-php
 
 ## Quick Start
 
-Copy the file `.env.default` to `.env`, and update as needed.
-
 Base usage requires instantiation of the AirtableClient, as shown below:
 
 ``` php
@@ -40,13 +38,15 @@ require_once('vendor/autoload.php');
 use Beachcasts\Airtable\AirtableClient;
 use Beachcasts\Airtable\Config;
 
-// Add .env contents to your environment - see documentation for recomendations
+// Add details to your environment - see documentation for recomendations
 
 $airtableClient = new AirtableClient(Config::fromEnvironment(), <your_baseid>);
 $table = $airtableClient->getTable(<your_table_name>);
 ```
 
-NOTE: Update `<your_baseid>` and `<your_table_name>` as needed.
+##### NOTES:
+1. Update `<your_baseid>` and `<your_table_name>` as needed.
+1. the `Config::fromEnvironment`
 
 For more details of how to use the AirtableClient, see the [/docs](https://beachcasts.github.io/airtable-sdk-php/), where examples highlight using `create()`, `read()`, `update()`, `delete()`, and `list()` methods on/with Airtable data.
 
@@ -55,16 +55,65 @@ For more details of how to use the AirtableClient, see the [/docs](https://beach
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
 ## Testing
-Running the test suite requires the manual creation of a `Base` at Airtable. Log into your Airtable account and `Add a base` using the `Start from scratch` method. Let the new base creation retain the default `Untitled Base` name. You can customize as desired, but this will require you to also update the tests.
 
-Next, you will need the `base_id` in order to run the tests, as well as the `api_key`. By going to the [Airtable API docs](https://airtable.com/api) you can now click into the new test base and view the `base_id`. Likewise, you can check the box in the upper right to display the api key.
+Airtable-SDK has 3 Test Suites: Full, Unit and Integration, we include a Dev requirement against PHPUnit.
+Please make sure you run the composer install to get all dependencies.
+```bash
+$ composer install
+```
 
-Add the key and id to the `.env`, which can be created by copying the `.env.default` to `.env`, and updating as needed..
+#### Unit Tests
 
-Following that, tests can be run with the following command:
+Running the unit tests is simply telling phpunit to run the "unit" testsuite
 
-``` bash
+```bash
+$ vendor/bin/phpunit --testsuite=unit
+```
+
+#### Integration Tests
+
+Running the integration tests will require an actual account and details from Airtable.
+
+1. Copy the file `tests\.env.default` to `tests\.env`
+1. Log into your Airtable account
+1. `Add a base` using the `Start from scratch` method.
+Let the new base creation retain the default `Untitled Base` name.
+1. Visit [Airtable API docs](https://airtable.com/api) and select your `Base`
+1. Copy the Base ID from the Introduction section. Look for `The ID of this base is`
+Add this to the `tests\.env` under the `TEST_BASE_ID` key
+1. Go to [Your account](https://airtable.com/account) and copy your API Key.
+Add this to the `tests\.env` under the `AIRTABLE_API_KEY` key
+1. If you have changed the default Table name away from `Table 1` - update the `TEST_TABLE_NAME` in the `tests\.env`
+
+Once the .env is configured, tests can be run with the following command:
+```bash
+$ vendor/bin/phpunit --testsuite=integration
+```
+
+#### Full Test Suite
+
+To run the full Test Suite, you will need to follow the steps outlined for Integration testing. To Exceute, run the following command:
+```bash
+$ vendor/bin/phpunit --testsuite=full
+```
+or
+```bash
 $ vendor/bin/phpunit
+```
+
+## Quality Control
+
+To maintain quality control, we maintain use of the following standards:
+* [PSR-2](https://www.php-fig.org/psr/psr-2/) Coding Standard,
+* [PSR-4](https://www.php-fig.org/psr/psr-4/) standard for Autoload locations (via composer)
+* [PSR-7](https://www.php-fig.org/psr/psr-7/) standard for HTTP messages (via GuzzleHttp implementation)
+
+We provide a `phpcs.xml.dist` within the codebase to validate the Coding standard using Code Sniffer (included as dev dependency in our composer.json manifest)
+
+To run the codesniffer against the codebase, use the following command.
+
+```bash
+$ vendor/bin/phpcs --standard=phpcs.xml.dist src
 ```
 
 ## Contributing

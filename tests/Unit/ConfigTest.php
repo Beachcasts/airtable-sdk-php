@@ -1,10 +1,11 @@
 <?php
 
-namespace Beachcasts\AirtableTests;
+declare(strict_types=1);
+
+namespace Beachcasts\AirtableTests\Unit;
 
 use Assert\InvalidArgumentException;
 use Beachcasts\Airtable\Config;
-use Dotenv\Dotenv;
 use PHPUnit\Framework\TestCase;
 use ReflectionProperty;
 use TypeError;
@@ -44,9 +45,9 @@ class ConfigTest extends TestCase
      */
     public function testThatFromEnvironmentFailsWhenNoEnvironSet(): void
     {
-        putenv('BASE_URL');
-        putenv('VERSION');
-        putenv('API_KEY');
+        putenv('AIRTABLE_BASE_URL');
+        putenv('AIRTABLE_API_VERSION');
+        putenv('AIRTABLE_API_KEY');
         $this->expectException(TypeError::class);
         Config::fromEnvironment();
     }
@@ -56,21 +57,21 @@ class ConfigTest extends TestCase
      */
     public function testThatFromEnvironmentSetsInternalWhenEnvironSet(): void
     {
-        $baseUrl = 'https://' . sha1(random_bytes('10')) . '.com';
+        $baseUrl = 'https://' . sha1(random_bytes(10)) . '.com';
         $version = 'v' . random_int(11, 99);
         $apiKey = sha1(random_bytes(10));
 
         //put our values into ENV
-        putenv('BASE_URL=' . $baseUrl);
-        putenv('VERSION=' . $version);
-        putenv('API_KEY=' . $apiKey);
+        putenv('AIRTABLE_BASE_URL=' . $baseUrl);
+        putenv('AIRTABLE_API_VERSION=' . $version);
+        putenv('AIRTABLE_API_KEY=' . $apiKey);
 
         $config = Config::fromEnvironment();
 
         //clean up
-        putenv('BASE_URL');
-        putenv('VERSION');
-        putenv('API_KEY');
+        putenv('AIRTABLE_BASE_URL');
+        putenv('AIRTABLE_API_VERSION');
+        putenv('AIRTABLE_API_KEY');
 
         self::assertSame($baseUrl, $this->baseUrlProperty->getValue($config));
         self::assertSame($baseUrl, $config->getBaseUrl());
@@ -117,8 +118,12 @@ class ConfigTest extends TestCase
 
     public function testThatGettersReturnExpectedValues(): void
     {
-        Dotenv::createImmutable(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR)->load();
-        $config = Config::fromEnvironment();
+        $config = Config::fromValues(
+            'https://baseUrl.test',
+            'v0',
+            'apiKey'
+        );
+
         $randomValue = sha1(random_bytes(10));
         $this->baseUrlProperty->setValue($config, $randomValue);
         $this->assertSame($randomValue, $config->getBaseUrl());
