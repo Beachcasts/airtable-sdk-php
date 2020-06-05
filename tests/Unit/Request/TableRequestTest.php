@@ -291,16 +291,18 @@ class TableRequestTest extends TestCase
 
     public function badDeleteRecordsDataProvider(): array
     {
+        $records['records'][]['id'] =  sha1(random_bytes(10));
+
         return [
             'table name empty' => [
                 'tableName' => '',
-                'id' => sha1(random_bytes(10)),
+                'records' => $records,
                 'message' => 'Table name must not be empty'
             ],
-            'id empty' => [
+            'records empty' => [
                 'tableName' => sha1(random_bytes(10)),
-                'id' => '',
-                'message' => 'Record Id must not be empty'
+                'records' => [],
+                'message' => 'Records must not be empty'
             ]
         ];
     }
@@ -308,26 +310,27 @@ class TableRequestTest extends TestCase
     /**
      * @dataProvider badDeleteRecordsDataProvider
      * @param string $tableName
-     * @param string $id
+     * @param array $records
      * @param string $message
      */
     public function testThatDeleteRecordsThrowsExpectedExceptionWithBadData(
         string $tableName,
-        string $id,
+        array $records,
         string $message
     ): void {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage($message);
 
-        TableRequest::deleteRecords($tableName, $id);
+        TableRequest::deleteRecords($tableName, $records);
     }
 
     public function testThatDeleteRecordsReturnsCorrectlyFormattedRequest(): void
     {
         $tableName = sha1(random_bytes(10));
-        $recordId = (string)random_int(11, 99);
-        $queryEncoded = http_build_query(['records' => [$recordId]]);
-        $deleteRecordsResponse = TableRequest::deleteRecords($tableName, $recordId);
+        $records['records'][]['id'] = (string)random_int(11, 99);
+        $test['records'][] = $records['records'][0]['id'];
+        $queryEncoded = http_build_query($test);
+        $deleteRecordsResponse = TableRequest::deleteRecords($tableName, $records);
         $this->assertSame($tableName, $deleteRecordsResponse->getUri()->getPath());
         $this->assertSame($queryEncoded, $deleteRecordsResponse->getUri()->getQuery());
     }
