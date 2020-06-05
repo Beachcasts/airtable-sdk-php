@@ -71,13 +71,6 @@ class Table
      */
     public function list(array $params)
     {
-//        if (!empty($params))
-//        $queryString = http_build_query($params);
-//
-//        $url = $this->tableName . '?' . $queryString;
-
-//        return $this->client->request('GET', $url);
-
         return $this->client->send(
             TableRequest::listRecords($this->getName(), $params)
         );
@@ -121,13 +114,13 @@ class Table
     }
 
     /**
-     * @param string $recordId
+     * @param array $records
      * @return mixed
      */
-    public function delete(string $recordId)
+    public function delete(array $records)
     {
         return $this->client->send(
-            TableRequest::deleteRecords($this->getName(), $recordId)
+            TableRequest::deleteRecords($this->getName(), $records)
         );
     }
 }
