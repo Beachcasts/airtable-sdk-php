@@ -187,11 +187,11 @@ class TableTest extends TestCase
 
     /**
      * @depends testReplaceRecord
-     * @param array $record
+     * @param array $records
      */
-    public function testDeleteRecord(array $record): void
+    public function testDeleteRecord(array $records): void
     {
-        $response = $this->table->delete($record['records'][0]['id']);
+        $response = $this->table->delete($records);
 
         $result = json_decode((string)$response->getBody(), true);
 
@@ -222,6 +222,6 @@ class TableTest extends TestCase
         );
 
         $result = json_decode((string)$response->getBody(), true);
-        $this->table->delete($result['records']['0']['id']);
+        $this->table->delete($result);
     }
 }
