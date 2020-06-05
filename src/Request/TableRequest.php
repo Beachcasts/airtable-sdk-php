@@ -106,23 +106,25 @@ class TableRequest extends Request
         );
     }
 
-    public static function deleteRecords(string $tableName, string $recordId): Request
+    public static function deleteRecords(string $tableName, array $records): Request
     {
         Assert::that($tableName)
             ->notEmpty('Table name must not be empty');
 
-        Assert::that($recordId)
-            ->notEmpty('Record Id must not be empty');
+        Assert::that($records)
+            ->notEmpty('Records must not be empty');
 
-        $deleteRecords = [
-            'records' => [
-                $recordId
-            ]
-        ];
+        $params = [];
+
+        $i = 0;
+        foreach ($records as $record) {
+            $params['records'][] = $record[$i]['id'];
+            $i++;
+        }
 
         return new self(
             'DELETE',
-            $tableName . '?' . http_build_query($deleteRecords)
+            $tableName . '?' . http_build_query($params)
         );
     }
 
