@@ -32,9 +32,9 @@ class Config
 
     public static function fromEnvironment(): self
     {
-        $baseUrl = getenv('BASE_URL');
-        $version = getenv('VERSION');
-        $apiKey = getenv('API_KEY');
+        $baseUrl = getenv('AIRTABLE_BASE_URL');
+        $version = getenv('AIRTABLE_API_VERSION');
+        $apiKey = getenv('AIRTABLE_API_KEY');
 
         return self::fromValues($baseUrl, $version, $apiKey);
     }

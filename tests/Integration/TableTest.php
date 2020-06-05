@@ -2,34 +2,35 @@
 
 declare(strict_types=1);
 
-namespace Beachcasts\AirtableTests;
+namespace Beachcasts\AirtableTests\Integration;
 
-use Beachcasts\Airtable\AirtableClient as AirtableClient;
+use Beachcasts\Airtable\AirtableClient;
 use Beachcasts\Airtable\Config;
 use Beachcasts\Airtable\Table;
 use Dotenv\Dotenv;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 
-/**
- * Class TableTest
- * @package Beachcasts\Airtable
- */
 class TableTest extends TestCase
 {
-    protected $data;
-    protected $table;
+    /**
+     * @var array $apiData
+     */
+    private $apiData = [];
+
+    /**
+     * @var Table
+     */
+    private $table;
 
     protected function setUp(): void
     {
         Dotenv::createImmutable(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR)->load();
-        $this->config = Config::fromEnvironment();
-        $this->table = new Table(getenv('TEST_TABLE_NAME'));
+        $config = Config::fromEnvironment();
+        $this->table = (new AirtableClient($config, getenv('TEST_BASE_ID')))
+            ->getTable(getenv('TEST_TABLE_NAME'));
 
-        $airtableClient = new AirtableClient($this->config, getenv('TEST_BASE_ID'));
-        $this->table->setClient($airtableClient->getClient());
-
-        $this->data = [
+        $this->apiData = [
             'records' => [
                 [
                     'fields' => [
@@ -41,21 +42,9 @@ class TableTest extends TestCase
         ];
     }
 
-    public function testThatConstructorSetsInternalPropertyAndGetterReturnsSame(): void
-    {
-        $tableNameProperty = new \ReflectionProperty(Table::class, 'tableName');
-        $tableNameProperty->setAccessible(true);
-
-        $testTableName = sha1(random_bytes(10));
-        $table = new Table($testTableName);
-
-        $this->assertSame($testTableName, $tableNameProperty->getValue($table));
-        $this->assertSame($testTableName, $table->getName());
-    }
-
     public function testCreateRecord(): array
     {
-        $response = $this->table->create($this->data['records']);
+        $response = $this->table->create($this->apiData['records']);
 
         $result = json_decode((string)$response->getBody(), true);
 
@@ -99,7 +88,8 @@ class TableTest extends TestCase
      */
     public function testReadRecord(array $record): void
     {
-        $response = $this->table->read($record['records'][0]['id']);
+        $recordId = $record['records'][0]['id'];
+        $response = $this->table->read($recordId);
 
         $result = json_decode((string)$response->getBody(), true);
 
@@ -112,12 +102,12 @@ class TableTest extends TestCase
      */
     public function testUpdateWrongTypePassed(array $record): void
     {
-        $this->data = $record;
-        unset($this->data['records'][0]['createdTime']);
+        $this->apiData = $record;
+        unset($this->apiData['records'][0]['createdTime']);
 
         $this->expectException(\Exception::class);
 
-        $this->table->update($this->data['records'], 'GET');
+        $this->table->update($this->apiData['records'], 'GET');
     }
 
     /**
@@ -130,10 +120,10 @@ class TableTest extends TestCase
     {
         $newName = 'New Name Test';
 
-        $this->data['records'][0]['id'] = $record['records'][0]['id'];
-        $this->data['records'][0]['fields']['Name'] = $newName;
+        $this->apiData['records'][0]['id'] = $record['records'][0]['id'];
+        $this->apiData['records'][0]['fields']['Name'] = $newName;
 
-        $response = $this->table->update($this->data['records']);
+        $response = $this->table->update($this->apiData['records']);
 
         $result = json_decode((string)$response->getBody(), true);
 
@@ -162,11 +152,11 @@ class TableTest extends TestCase
     {
         $newName = 'Another New Name Test';
 
-        $this->data = $record;
-        $this->data['records'][0]['fields']['Name'] = $newName;
-        unset($this->data['records'][0]['createdTime']);
+        $this->apiData = $record;
+        $this->apiData['records'][0]['fields']['Name'] = $newName;
+        unset($this->apiData['records'][0]['createdTime']);
 
-        $response = $this->table->update($this->data['records'], "PUT");
+        $response = $this->table->update($this->apiData['records'], "PUT");
 
         $result = json_decode((string)$response->getBody(), true);
 

@@ -4,7 +4,5 @@ phpcs.xml
 .phpunit.result.cache
 .idea
 .vscode
-.env
-build/coverage
+tests/.env
 build/*
-!build/logs
